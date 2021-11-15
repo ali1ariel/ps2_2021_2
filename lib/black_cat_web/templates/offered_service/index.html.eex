@@ -1,0 +1,28 @@
+<h1>Listing Offered services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for offered_service <- @offered_services do %>
+    <tr>
+      <td><%= offered_service.name %></td>
+      <td><%= offered_service.type %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.offered_service_path(@conn, :show, offered_service) %></span>
+        <span><%= link "Edit", to: Routes.offered_service_path(@conn, :edit, offered_service) %></span>
+        <span><%= link "Delete", to: Routes.offered_service_path(@conn, :delete, offered_service), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Offered service", to: Routes.offered_service_path(@conn, :new) %></span>

@@ -7,7 +7,8 @@ defmodule BlackCat.Repo.Migrations.CreateContactPhone do
       add :calls?, :boolean, default: false, null: false
       add :whatsapp?, :boolean, default: false, null: false
       add :scheduling?, :boolean, default: true, null: false
-      add :uuid, :uuid, primary_key: true
+      add :id, :uuid, primary_key: true
+      add :offered_service_uuid, references(:offered_services, type: :uuid, foreign_key: :id, on_delete: :nothing)
 
       timestamps()
     end

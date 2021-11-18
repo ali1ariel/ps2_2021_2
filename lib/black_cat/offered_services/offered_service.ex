@@ -11,7 +11,7 @@ defmodule BlackCat.OfferedServices.OfferedService do
 
   schema "offered_services" do
     field :name, :string
-    field :type, Ecto.Enum, values: [particular: 1, public: 2]
+    field :type, Ecto.Enum, values: [private: 1, public: 2]
 
     has_many :time_intervals, TimeInterval
     has_many :specialties, Specialty
@@ -29,5 +29,6 @@ defmodule BlackCat.OfferedServices.OfferedService do
     offered_service
     |> cast(attrs, [:name, :type])
     |> validate_required([:name, :type])
+    # |> cast_assoc()
   end
 end

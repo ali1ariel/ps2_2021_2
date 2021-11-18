@@ -4,8 +4,8 @@ defmodule BlackCat.Repo.Migrations.CreateOfferedServiceSpecialties do
   def change do
     create table(:offered_service_specialties, primary_key: false) do
       add :name, :string
-      add :uuid, :uuid, primary_key: true
-      add :offered_service_uuid, references(:offered_services, on_delete: :nothing)
+      add :id, :uuid, primary_key: true
+      add :offered_service_uuid, references(:offered_services, type: :uuid, foreign_key: :id, on_delete: :nothing)
 
       timestamps()
     end

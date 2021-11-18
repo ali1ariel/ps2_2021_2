@@ -4,9 +4,11 @@ defmodule BlackCatWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
+    plug :put_root_layout, {BlackCatWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    # plug BlackCatWeb.GenerateCSRF
   end
 
   pipeline :api do
@@ -17,6 +19,10 @@ defmodule BlackCatWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/services", OfferedServiceController, except: [:show]
+    get "/services/:id/banana", OfferedServiceController, :show
+
+
   end
 
   # Other scopes may use custom stacks.

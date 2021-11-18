@@ -12,8 +12,8 @@ defmodule BlackCat.Repo.Migrations.CreateOfferedServiceAddress do
       add :complement, :string
       add :references, :string
       add :geocode, :string
-      add :uuid, :uuid, primary_key: true
-      add :offered_service_uuid, references(:offered_services, on_delete: :delete_all)
+      add :id, :uuid, primary_key: true
+      add :offered_service_uuid, references(:offered_services, type: :uuid, foreign_key: :id, on_delete: :delete_all)
 
 
       timestamps()

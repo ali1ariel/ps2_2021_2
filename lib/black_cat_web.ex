@@ -24,6 +24,8 @@ defmodule BlackCatWeb do
       import Plug.Conn
       import BlackCatWeb.Gettext
       alias BlackCatWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Controller, only: [live_render: 3]
+
     end
   end
 
@@ -48,6 +50,7 @@ defmodule BlackCatWeb do
 
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 
@@ -58,10 +61,34 @@ defmodule BlackCatWeb do
     end
   end
 
+
+  def live_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {BlackCatWeb.LayoutView, "live.html"}
+
+      unquote(view_helpers())
+
+      # import BlackCat.Accounts.Auth, only: [is_signed_in?: 1]
+    end
+  end
+
+
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+
+      unquote(view_helpers())
+    end
+  end
+
+
   defp view_helpers do
     quote do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+      import Phoenix.LiveView.Helpers
+
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View

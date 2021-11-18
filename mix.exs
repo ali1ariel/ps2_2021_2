@@ -33,18 +33,35 @@ defmodule BlackCat.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.9"},
+      {:phoenix, "~> 1.6.2"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.11"},
+      {:phoenix_html, "~> 3.1", override: true},
+      {:phoenix_live_view, "~> 0.17.5"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.4"},
+      {:phoenix_live_dashboard, "~> 0.6.1"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:font_awesomex, "~> 4.0.0"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"},
+      {:tesla, "~> 1.3.0"},
+      {:oban, "~> 2.0"},
+      {:cors_plug, "~> 2.0"},
+      {:contex, "0.3.0"},
+      {:wannabe_bool, "~> 0.1"},
+      {:poison, "~> 3.1"},
+      {:ecto_psql_extras, "~> 0.7", only: :dev},
+      {:tzdata, "~> 1.0.3"},
+      {:quantum, "~> 3.0"},
+      {:ex_doc, ">= 0.0.0", only: :dev},
+      {:credo, "~> 1.5", only: [:test, :dev]},
+      {:plug, "~> 1.10.0"},
+      {:countries, "~> 1.6"}
     ]
   end
 

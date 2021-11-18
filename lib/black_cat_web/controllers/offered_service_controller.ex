@@ -9,12 +9,16 @@ defmodule BlackCatWeb.OfferedServiceController do
     render(conn, "index.html", offered_services: offered_services)
   end
 
+  @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = OfferedServices.change_offered_service(%OfferedService{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"offered_service" => offered_service_params}) do
+
+    offered_service_params = Map.put(offered_service_params, "type", String.to_integer(offered_service_params["type"]))
+
     case OfferedServices.create_offered_service(offered_service_params) do
       {:ok, offered_service} ->
         conn
@@ -39,6 +43,8 @@ defmodule BlackCatWeb.OfferedServiceController do
 
   def update(conn, %{"id" => id, "offered_service" => offered_service_params}) do
     offered_service = OfferedServices.get_offered_service!(id)
+    offered_service_params = Map.put(offered_service_params, "type", String.to_integer(offered_service_params["type"]))
+
 
     case OfferedServices.update_offered_service(offered_service, offered_service_params) do
       {:ok, offered_service} ->

@@ -13,6 +13,8 @@ defmodule BlackCat.OfferedServices.Address do
     field :state, :string
     field :street, :string
 
+    belongs_to :offered_service, BlackCat.OfferedServices.OfferedService
+
     timestamps()
   end
 

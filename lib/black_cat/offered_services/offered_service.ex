@@ -29,6 +29,7 @@ defmodule BlackCat.OfferedServices.OfferedService do
     offered_service
     |> cast(attrs, [:name, :type])
     |> validate_required([:name, :type])
+
     # |> cast_assoc()
   end
 end

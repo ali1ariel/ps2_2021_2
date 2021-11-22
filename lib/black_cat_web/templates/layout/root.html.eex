@@ -4,13 +4,13 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title><%= assigns[:page_title] || "#{Application.get_env(:somali_live_project, :event_nick_name)} - Ciente Eventos" %></title>
+    <title><%= assigns[:page_title] || "#{Application.get_env(:somali_live_project, :event_nick_name)}" %></title>
 
 
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, ~s[/css/app.css]) %>"/>
     <script src="https://kit.fontawesome.com/a73c23d57b.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Noto+Sans+TC&family=Roboto&family=Montserrat&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, ~s[/js/app.js]) %>"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
 

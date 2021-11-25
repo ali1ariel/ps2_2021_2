@@ -16,6 +16,12 @@ config :black_cat, BlackCatWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :black_cat, BlackCat.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
+  pool_size: 10
+
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

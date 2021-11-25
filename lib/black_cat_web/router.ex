@@ -8,7 +8,7 @@ defmodule BlackCatWeb.Router do
     plug :put_root_layout, {BlackCatWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    # plug BlackCatWeb.GenerateCSRF
+    plug BlackCatWeb.GenerateCSRF
   end
 
   pipeline :api do

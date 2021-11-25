@@ -88,7 +88,6 @@ defmodule BlackCatWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
       import Phoenix.LiveView.Helpers
-      import BlackCatWeb.LiveHelpers
 
 
       # Import basic rendering functionality (render, render_layout, etc)

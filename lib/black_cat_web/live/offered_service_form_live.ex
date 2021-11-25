@@ -5,7 +5,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
 
   def render(assigns) do
     ~L"""
-      <%= f = form_for OfferedServices.OfferedService.changeset(%OfferedServices.OfferedService{}, %{}), "", [] %>
+      <%= f = form_for @changeset, "", [] %>
         <%= if @changeset.action do %>
           <div class="alert alert-danger">
             <p>Oops, something went wrong! Please check the errors below.</p>
@@ -26,9 +26,11 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
           <%#= time_input time_interval, :init_time, precision: :minute %>
           <%#= time_input time_interval, :end_time, precision: :minute %>
         <%# end %>
-        <%= for id <- Enum.to_list(0..@ids) do %>
-          <%= live_component TimeIntervalComponent, id: id %>
-        <% end %>
+
+        <%= label f, :time_intervals %>
+        <%#= for id <- Enum.to_list(0..@ids) do %>
+          <%= live_component TimeIntervalComponent, id: "id1", time_interval_changeset: @time_interval_changeset, csrf_token: @csrf_token %>
+        <%# end %>
         <button>Click Me</button>
         <div>
           <%= submit "Save" %>
@@ -37,11 +39,14 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
     """
   end
 
-  def mount(_params, %{"action" => action, "changeset" => changeset}, socket) do
-      IO.inspect assigns = [
+  def mount(_params, %{"action" => action, "csrf_token" => csrf_token}, socket) do
+      assigns = [
       action: action,
-      changeset: changeset,
-      ids: 0
+      changeset: OfferedServices.change_offered_service(%OfferedServices.OfferedService{}),
+      time_interval_changeset: OfferedServices.change_time_interval(%OfferedServices.TimeInterval{}),
+      ids: 0,
+      time_intervals: [],
+      csrf_token: csrf_token
     ]
     {:ok, assign(socket, assigns)}
   end

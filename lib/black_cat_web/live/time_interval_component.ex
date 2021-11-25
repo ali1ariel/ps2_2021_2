@@ -5,31 +5,32 @@ defmodule BlackCatWeb.Live.TimeIntervalComponent do
   def render(assigns) do
     ~H"""
       <div>
-        <div id={"time_interval-#{@id}"}> Secrets from a girl, who seem it all - <%= @id %> </div>
-        <button phx-click="ok" phx-value-id="@id+1">action</button>
-        <%#= f = form_for OfferedServices.OfferedService.changeset(%OfferedServices.OfferedService{}, %{}), "", [] %>
-          <%#= select f, :init_day, Ecto.Enum.mappings(OfferedServices.TimeInterval, :init_day)  %>
-          <%#= time_input f, :init_time, precision: :minute %>
-          <%#= time_input f, :end_time, precision: :minute %>
-        <!--/form-->
+        <.form let={f} for={@changeset}, phx-target="#{@myself}", phx-change="validate" id={"time_interval-#{@id}"}>
+          <%= select f, :init_day, Ecto.Enum.mappings(OfferedServices.TimeInterval, :init_day)  %>
+          <%= time_input f, :init_time, precision: :minute, value: "00:00"%>
+          <%= time_input f, :end_time, precision: :minute, value: "23:59"%>
+        </.form>
       </div>
     """
   end
 
   def mount(socket), do: {:ok, socket}
 
-  def update(%{id: id}, socket) do
+  def update(%{id: id, csrf_token: csrf_token, time_interval_changeset: changeset}, socket) do
     assigns = [
-      id: id
+      id: id,
+      changeset: changeset,
+      csrf_token: csrf_token
     ]
     {:ok, assign(socket, assigns)}
   end
 
-  def handle_event("ok", %{"id" => id}, socket) do
+  def handle_event("validate", data, socket) do
+    IO.inspect data
     send(
       self(),
       {__MODULE__, :updated_time_interval,
-       %{time_interval: "time_interval#{id}"}}
+       %{time_interval: "time_interval"}}
     )
 
 

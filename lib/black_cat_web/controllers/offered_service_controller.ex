@@ -12,7 +12,7 @@ defmodule BlackCatWeb.OfferedServiceController do
   @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = OfferedServices.change_offered_service(%OfferedService{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, csrf_token: get_csrf_token())
   end
 
   def create(conn, %{"offered_service" => offered_service_params}) do

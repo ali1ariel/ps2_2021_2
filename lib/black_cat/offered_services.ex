@@ -1,6 +1,8 @@
 defmodule  BlackCat.OfferedServices do
 
-  alias BlackCat.OfferedServices.OfferedService
+  alias BlackCat.OfferedServices
+  alias OfferedServices.OfferedService
+  alias OfferedServices.TimeInterval
   alias BlackCat.Repo
 
   @doc """
@@ -95,5 +97,18 @@ defmodule  BlackCat.OfferedServices do
   """
   def change_offered_service(%OfferedService{} = offered_service, attrs \\ %{}) do
     OfferedService.changeset(offered_service, attrs)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking time interval changes.
+
+  ## Examples
+
+      iex> change_time_interval(time_interval)
+      %Ecto.Changeset{data: %TimeInterval{}}
+
+  """
+  def change_time_interval(%TimeInterval{} = time_interval, attrs \\ %{}) do
+    TimeInterval.changeset(time_interval, attrs)
   end
 end

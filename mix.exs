@@ -47,8 +47,8 @@ defmodule BlackCat.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:font_awesomex, "~> 4.0.0"},
-      {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 1.0"},
+      {:comeonin, "~> 5.3"},
+      {:bcrypt_elixir, "~> 2.3"},
       {:tesla, "~> 1.3.0"},
       {:oban, "~> 2.0"},
       {:cors_plug, "~> 2.0"},
@@ -61,7 +61,8 @@ defmodule BlackCat.MixProject do
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:credo, "~> 1.5", only: [:test, :dev]},
       {:plug, "~> 1.10.0"},
-      {:countries, "~> 1.6"}
+      {:countries, "~> 1.6"},
+      {:swoosh, "~> 1.4"}
     ]
   end
 

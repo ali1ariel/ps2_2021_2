@@ -1,12 +1,13 @@
 defmodule BlackCat.BlogPosts.Post do
   use Ecto.Schema
   import Ecto.Changeset
+  alias BlackCat.BlogPosts.Comment
 
   schema "posts" do
     field :body, :string
     field :title, :string
 
-    has_many :comments, BlackCat.Comment
+    has_many :comments, Comment
 
     timestamps()
   end

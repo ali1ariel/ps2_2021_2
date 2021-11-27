@@ -3,7 +3,7 @@ defmodule BlackCatWeb.PostController do
 
   alias BlackCat.BlogPosts
   alias BlackCat.BlogPosts.Post
-  alias BlackCat.Comment
+  alias BlackCat.BlogPosts.Comment
   alias BlackCat.Repo
 
 
@@ -52,11 +52,11 @@ defmodule BlackCatWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = BlogPosts.get_post!(id)
-    render(conn, "show.html", post: post)
-    # post = Repo.get(BlogPosts, id) |> Repo.preload([:comments])
-    # changeset = Comment.changeset(%Comment{})
-    # render(conn, "show.html", post: post, changeset: changeset)
+    # post = BlogPosts.get_post!(id)
+    # render(conn, "show.html", post: post)
+    post = BlogPosts.get_post!(id) |> Repo.preload([:comments])
+    changeset = Comment.changeset(%Comment{})
+    render(conn, "show.html", post: post, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do

@@ -1,4 +1,4 @@
-defmodule BlackCat.Comment do
+defmodule BlackCat.BlogPosts.Comment do
   use Ecto.Schema
   import Ecto.Changeset
 

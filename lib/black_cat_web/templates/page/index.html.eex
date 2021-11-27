@@ -1,19 +1,12 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>Peace of mind from prototype to production</p>
-</section>
 <section>
   <article class="column">
-    <h2>Conte[udos</h2>
+    <h2>Contents</h2>
     <ul>
       <li>
         <%= link "Offered Services", to: Routes.offered_service_path(@conn, :index) %>
       </li>
-      <li>
-        <%#= link "Users", to: Routes.user_index_path(@conn, :index) %>
-      </li>
     </ul>
-  </article>  
+  </article>
 </section>
 
 <section class="row">

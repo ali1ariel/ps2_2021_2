@@ -4,7 +4,8 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title><%= assigns[:page_title] || "#{Application.get_env(:somali_live_project, :event_nick_name)}" %></title>
+    <!--<title><%#= assigns[:page_title] || "#{Application.get_env(:somali_live_project, :event_nick_name)}" %></title> -->
+    <%= live_title_tag assigns[:page_title] || "Saúde da População Trans", suffix: " · Rede Transformação" %>
 
 
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, ~s[/css/app.css]) %>"/>
@@ -16,7 +17,7 @@
 
         <%= csrf_meta_tag() %>
 
-  </head>    
+  </head>
   <body class="bg-white-event h-full overflow-x-hidden  leading-normal tracking-normal">
 
 

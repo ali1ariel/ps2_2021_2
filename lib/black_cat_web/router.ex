@@ -26,7 +26,7 @@ defmodule BlackCatWeb.Router do
     resources "/posts", PostController do
       post "/comment", PostController, :add_comment
     end
-    get "/services/:id/banana", OfferedServiceController, :show
+    get "/services/:id", OfferedServiceController, :show
 
 
   end

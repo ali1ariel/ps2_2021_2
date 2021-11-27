@@ -23,6 +23,9 @@ defmodule BlackCatWeb.Router do
 
     get "/", PageController, :index
     resources "/services", OfferedServiceController, except: [:show]
+    resources "/posts", PostController do
+      post "/comment", PostController, :add_comment
+    end
     get "/services/:id/banana", OfferedServiceController, :show
 
 

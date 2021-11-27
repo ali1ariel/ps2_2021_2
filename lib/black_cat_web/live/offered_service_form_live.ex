@@ -50,7 +50,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
     ]
     {:ok, assign(socket, assigns)}
   end
-  def handle_event("add_time_interval", _, socket) do
+  def handle_event("add_time_interval", _, _socket) do
 
   end
 

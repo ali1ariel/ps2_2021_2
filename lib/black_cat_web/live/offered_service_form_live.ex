@@ -5,7 +5,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
 
   def render(assigns) do
     ~L"""
-      <%= f = form_for @changeset, "", [] %>
+      <%= f = form_for @changeset, @action, [] %>
         <%= if @changeset.action do %>
           <div class="alert alert-danger">
             <p>Oops, something went wrong! Please check the errors below.</p>
@@ -27,11 +27,10 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
           <%#= time_input time_interval, :end_time, precision: :minute %>
         <%# end %>
 
-        <%= label f, :time_intervals %>
+        <%#= label f, :time_intervals %>
         <%#= for id <- Enum.to_list(0..@ids) do %>
-          <%= live_component TimeIntervalComponent, id: "id1", time_interval_changeset: @time_interval_changeset, csrf_token: @csrf_token %>
+          <%#= live_component TimeIntervalComponent, id: "id1", time_interval_changeset: @time_interval_changeset, csrf_token: @csrf_token %>
         <%# end %>
-        <button>Click Me</button>
         <div>
           <%= submit "Save" %>
         </div>

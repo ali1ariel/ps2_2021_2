@@ -22,13 +22,10 @@ defmodule BlackCatWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/services", OfferedServiceController, except: [:show]
+    resources "/services", OfferedServiceController
     resources "/posts", PostController do
       post "/comment", PostController, :add_comment
     end
-    get "/services/:id", OfferedServiceController, :show
-
-
   end
 
   # Other scopes may use custom stacks.

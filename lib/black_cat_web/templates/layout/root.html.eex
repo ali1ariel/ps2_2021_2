@@ -16,7 +16,7 @@
 
         <%= csrf_meta_tag() %>
 
-  </head>
+  </head>    
   <body class="bg-white-event h-full overflow-x-hidden  leading-normal tracking-normal">
 
 

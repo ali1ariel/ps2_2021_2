@@ -11,8 +11,10 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2\n"
 
+
 msgid "Name"
 msgstr "Nome"
 
-msgid "Type"
-msgstr "Nome"
+
+msgid "Service type"
+msgstr "tipo de serviço"

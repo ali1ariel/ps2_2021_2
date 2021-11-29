@@ -2,6 +2,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
   use BlackCatWeb, :live_view
   alias BlackCat.OfferedServices
   alias BlackCatWeb.Live.TimeIntervalComponent
+  import BlackCatWeb.Gettext
 
   def render(assigns) do
     ~L"""
@@ -12,11 +13,11 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
           </div>
         <% end %>
 
-        <%= label f, :name %>
+        <%= gettext("Name") %>
         <%= text_input f, :name %>
         <%= error_tag f, :name %>
 
-        <%= label f, :type %>
+        <%= gettext("Service type") %>
         <%= select f, :type, Ecto.Enum.mappings(BlackCat.OfferedServices.OfferedService, :type) %>
         <%= error_tag f, :type %>
 

@@ -10,6 +10,9 @@ use Mix.Config
 config :black_cat,
   ecto_repos: [BlackCat.Repo]
 
+  config :gettext, :default_locale, "pt_BR"
+  config :elixir, :time_zone_database, Tzdata.TimeZoneDatabase
+
 # Configures the endpoint
 config :black_cat, BlackCatWeb.Endpoint,
   url: [host: "localhost"],

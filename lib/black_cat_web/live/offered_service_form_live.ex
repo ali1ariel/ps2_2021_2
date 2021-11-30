@@ -13,7 +13,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
           </div>
         <% end %>
 
-        <%= gettext("Name") %>
+        <%= label f, :name, gettext("Name") %>
         <%= text_input f, :name %>
         <%= error_tag f, :name %>
 
@@ -33,7 +33,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
           <%#= live_component TimeIntervalComponent, id: "id1", time_interval_changeset: @time_interval_changeset, csrf_token: @csrf_token %>
         <%# end %>
         <div>
-          <%= submit "Save" %>
+          <%= submit gettext("Save") %>
         </div>
       </form>
     """
@@ -43,9 +43,9 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
       assigns = [
       action: action,
       changeset: OfferedServices.change_offered_service(%OfferedServices.OfferedService{}),
-      time_interval_changeset: OfferedServices.change_time_interval(%OfferedServices.TimeInterval{}),
+      # time_interval_changeset: OfferedServices.change_time_interval(%OfferedServices.TimeInterval{}),
       ids: 0,
-      time_intervals: [],
+      # time_intervals: [],
       csrf_token: csrf_token
     ]
     {:ok, assign(socket, assigns)}

@@ -15,6 +15,113 @@ msgstr ""
 msgid "Name"
 msgstr "Nome"
 
+msgid "Type"
+msgstr "Tipo"
+
+msgid "private"
+msgstr "privado"
+
+msgid "public"
+msgstr "público"
+
+msgid "Save"
+msgstr "Salvar"
+
+msgid "Back"
+msgstr "Voltar"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Show"
+msgstr "Ver"
+
+msgid "Delete"
+msgstr "Deletar"
+
+msgid "Settings"
+msgstr "Configurações"
+
+msgid "Password"
+msgstr "Senha"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Register"
+msgstr "Registrar"
+
+msgid "Home"
+msgstr "Início"
+
+msgid "Shelters"
+msgstr "Abrigos"
+
+msgid "Jobs"
+msgstr "Empregos"
+
+msgid "Contact"
+msgstr "Contato"
+
+msgid "Service"
+msgstr "Serviço"
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Content"
+msgstr "Conteúdo"
+
+msgid "New Post"
+msgstr "Novo Post"
+
+msgid "Edit Post"
+msgstr "Editar Post"
+
+msgid "Current password"
+msgstr "Senha atual"
+
+msgid "Services Network"
+msgstr "Rede de Atendimento"
 
 msgid "Service type"
-msgstr "tipo de serviço"
+msgstr "Tipo de Serviço"
+
+msgid "New Offered Service"
+msgstr "Cadastro de Serviços"
+
+msgid "Listing Offered Services"
+msgstr "Serviços Cadastrados"
+
+msgid "Edit Offered Service"
+msgstr "Editar Serviço"
+
+msgid "Listing Posts"
+msgstr "Lista de Posts"
+
+msgid "Keep me logged in for 60 days"
+msgstr "Mantenha-me conectado por 60 dias"
+
+msgid "Forgot your password?"
+msgstr "Esqueceu sua senha?"
+
+msgid "Send instructions to reset password"
+msgstr "Enviar instruções para resetar a senha"
+
+msgid "Change email"
+msgstr "Atualizar e-mail"
+
+msgid "Change password"
+msgstr "Atualizar senha"
+
+msgid "New password"
+msgstr "Nova senha"
+
+msgid "Confirm new password"
+msgstr "Confirmar nova senha"
+
+msgid "Reset password"
+msgstr "Resetar senha"
+
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr "Oops, parece que algo deu errado! Por favor verifique os erros abaixo."

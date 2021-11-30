@@ -60,7 +60,7 @@ defmodule BlackCatWeb.Router do
   scope "/admrede", BlackCatWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    get "/", PageController, :index
+    get "/", AdmPageController, :index
     resources "/services", OfferedServiceController
     resources "/posts", PostController
   end

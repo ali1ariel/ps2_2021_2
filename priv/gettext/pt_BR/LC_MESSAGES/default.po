@@ -84,6 +84,10 @@ msgstr "Senha atual"
 msgid "Services Network"
 msgstr "Rede de Atendimento"
 
+
+msgid "Administrative Panel"
+msgstr "Painel Administrativo"
+
 msgid "Service type"
 msgstr "Tipo de Serviço"
 

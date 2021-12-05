@@ -26,7 +26,7 @@ defmodule BlackCatWeb.OfferedServiceController do
         |> redirect(to: Routes.offered_service_path(conn, :show, offered_service))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, csrf_token: get_csrf_token())
     end
   end
 
@@ -38,7 +38,7 @@ defmodule BlackCatWeb.OfferedServiceController do
   def edit(conn, %{"id" => id}) do
     offered_service = OfferedServices.get_offered_service!(id)
     changeset = OfferedServices.change_offered_service(offered_service)
-    render(conn, "edit.html", offered_service: offered_service, changeset: changeset)
+    render(conn, "edit.html", offered_service: offered_service, changeset: changeset, csrf_token: get_csrf_token())
   end
 
   def update(conn, %{"id" => id, "offered_service" => offered_service_params}) do
@@ -53,7 +53,7 @@ defmodule BlackCatWeb.OfferedServiceController do
         |> redirect(to: Routes.offered_service_path(conn, :show, offered_service))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", offered_service: offered_service, changeset: changeset)
+        render(conn, "edit.html", offered_service: offered_service, changeset: changeset, csrf_token: get_csrf_token())
     end
   end
 

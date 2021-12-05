@@ -22,12 +22,18 @@ defmodule BlackCatWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/services", OfferedServiceController
-    resources "/posts", PostController do
-      post "/comment", PostController, :add_comment
-    end
-  end
 
+    get "/services", OfferedServiceController, :index
+    get "/services/:id", OfferedServiceController, :show
+    get "/posts", PostController, :index
+    get "/posts/:id", PostController, :show
+
+    delete "/users/log_out", UserSessionController, :delete
+    get "/users/confirm", UserConfirmationController, :new
+    post "/users/confirm", UserConfirmationController, :create
+    get "/users/confirm/:token", UserConfirmationController, :edit
+    post "/users/confirm/:token", UserConfirmationController, :update
+  end
   # Other scopes may use custom stacks.
   # scope "/api", BlackCatWeb do
   #   pipe_through :api
@@ -51,17 +57,12 @@ defmodule BlackCatWeb.Router do
 
   ## Authentication routes
 
-  scope "/", BlackCatWeb do
-    pipe_through [:browser, :redirect_if_user_is_authenticated]
+  scope "/admrede", BlackCatWeb do
+    pipe_through [:browser, :require_authenticated_user]
 
-    get "/users/register", UserRegistrationController, :new
-    post "/users/register", UserRegistrationController, :create
-    get "/users/log_in", UserSessionController, :new
-    post "/users/log_in", UserSessionController, :create
-    get "/users/reset_password", UserResetPasswordController, :new
-    post "/users/reset_password", UserResetPasswordController, :create
-    get "/users/reset_password/:token", UserResetPasswordController, :edit
-    put "/users/reset_password/:token", UserResetPasswordController, :update
+    get "/", PageController, :index
+    resources "/services", OfferedServiceController
+    resources "/posts", PostController
   end
 
   scope "/", BlackCatWeb do
@@ -73,12 +74,15 @@ defmodule BlackCatWeb.Router do
   end
 
   scope "/", BlackCatWeb do
-    pipe_through [:browser]
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
 
-    delete "/users/log_out", UserSessionController, :delete
-    get "/users/confirm", UserConfirmationController, :new
-    post "/users/confirm", UserConfirmationController, :create
-    get "/users/confirm/:token", UserConfirmationController, :edit
-    post "/users/confirm/:token", UserConfirmationController, :update
+    get "/users/register", UserRegistrationController, :new
+    post "/users/register", UserRegistrationController, :create
+    get "/users/log_in", UserSessionController, :new
+    post "/users/log_in", UserSessionController, :create
+    get "/users/reset_password", UserResetPasswordController, :new
+    post "/users/reset_password", UserResetPasswordController, :create
+    get "/users/reset_password/:token", UserResetPasswordController, :edit
+    put "/users/reset_password/:token", UserResetPasswordController, :update
   end
 end

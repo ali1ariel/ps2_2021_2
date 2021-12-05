@@ -17,9 +17,15 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
         <%= text_input f, :name %>
         <%= error_tag f, :name %>
 
-        <%= gettext("Service type") %>
+        <%= label f, :type, gettext("Service type") %>
         <%= select f, :type, Ecto.Enum.mappings(BlackCat.OfferedServices.OfferedService, :type) %>
         <%= error_tag f, :type %>
+
+
+
+        <%= label f, :observation, gettext("Observation") %>
+        <%= textarea f, :observation %>
+        <%= error_tag f, :observation %>
 
 
         <%#= inputs_for f, :time_intervals, fn time_interval -> %>
@@ -39,10 +45,11 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
     """
   end
 
-  def mount(_params, %{"action" => action, "csrf_token" => csrf_token}, socket) do
+
+  def mount(_params, %{"action" => action, "csrf_token" => csrf_token, "offered_service" => offered_service}, socket) do
       assigns = [
       action: action,
-      changeset: OfferedServices.change_offered_service(%OfferedServices.OfferedService{}),
+      changeset: OfferedServices.change_offered_service(offered_service),
       # time_interval_changeset: OfferedServices.change_time_interval(%OfferedServices.TimeInterval{}),
       ids: 0,
       # time_intervals: [],
@@ -50,6 +57,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
     ]
     {:ok, assign(socket, assigns)}
   end
+
   def handle_event("add_time_interval", _, _socket) do
 
   end

@@ -18,6 +18,9 @@ msgstr "Nome"
 msgid "Type"
 msgstr "Tipo"
 
+msgid "Observation"
+msgstr "Observação"
+
 msgid "private"
 msgstr "privado"
 
@@ -92,6 +95,9 @@ msgstr "Cadastro de Serviços"
 
 msgid "Listing Offered Services"
 msgstr "Serviços Cadastrados"
+
+msgid "Listing Users"
+msgstr "Usuarios Cadastrados"
 
 msgid "Edit Offered Service"
 msgstr "Editar Serviço"

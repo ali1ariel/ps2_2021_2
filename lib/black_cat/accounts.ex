@@ -8,6 +8,25 @@ defmodule BlackCat.Accounts do
 
   alias BlackCat.Accounts.{User, UserToken, UserNotifier}
 
+  def list_users, do: BlackCat.Repo.all(User)
+
+
+  @doc """
+  Deletes a user.
+
+  ## Examples
+
+      iex> delete_user(user)
+      {:ok, %User{}}
+
+      iex> delete_user(user)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_user(%User{} = user) do
+    Repo.delete(user)
+  end
+
   ## Database getters
 
   @doc """

@@ -18,7 +18,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
         <%= error_tag f, :name %>
 
         <%= label f, :type, gettext("Service type") %>
-        <%= select f, :type, Ecto.Enum.mappings(BlackCat.OfferedServices.OfferedService, :type) %>
+        <%= select f, :type, BlackCat.Enum.mappings(BlackCat.OfferedServices.OfferedService, :type) %>
         <%= error_tag f, :type %>
 
 

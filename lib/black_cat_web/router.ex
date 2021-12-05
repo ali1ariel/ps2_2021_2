@@ -63,6 +63,8 @@ defmodule BlackCatWeb.Router do
     get "/", PageController, :index
     resources "/services", OfferedServiceController
     resources "/posts", PostController
+    get "/users", UserController, :index
+    delete "/user/:id", UserController, :delete
   end
 
   scope "/", BlackCatWeb do

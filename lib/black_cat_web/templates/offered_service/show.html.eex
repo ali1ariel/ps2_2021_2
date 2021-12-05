@@ -12,6 +12,12 @@
     <%= @offered_service.type %>
   </li>
 
+
+  <li>
+    <strong><%= gettext("Observation") %>:</strong>
+    <%= @offered_service.observation %>
+  </li>
+
 </ul>
 
 <span><%= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, @offered_service) %></span>

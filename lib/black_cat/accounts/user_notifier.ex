@@ -45,16 +45,17 @@ defmodule BlackCat.Accounts.UserNotifier do
 
     ==============================
 
-    Hi #{user.email},
+      Hi #{user.email},
 
-    You can reset your password by visiting the URL below:
+      You can reset your password by visiting the URL below:
 
-    #{url}
+      #{url}
 
-    If you didn't request this change, please ignore this.
+      If you didn't request this change, please ignore this.
 
-    ==============================
-    """)
+      ==============================
+        """)
+      url
   end
 
   @doc """

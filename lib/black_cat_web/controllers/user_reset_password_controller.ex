@@ -10,7 +10,7 @@ defmodule BlackCatWeb.UserResetPasswordController do
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
-    if user = Accounts.get_user_by_email(email) do
+    url = if user = Accounts.get_user_by_email(email) do
       Accounts.deliver_user_reset_password_instructions(
         user,
         &Routes.user_reset_password_url(conn, :edit, &1)
@@ -21,7 +21,8 @@ defmodule BlackCatWeb.UserResetPasswordController do
     conn
     |> put_flash(
       :info,
-      "If your email is in our system, you will receive instructions to reset your password shortly."
+      #"If your email is in our system, you will receive instructions to reset your password shortly. \n
+      "there's no e-mail system at the moment, please, copy and paste this: #{url}"
     )
     |> redirect(to: "/")
   end

@@ -1,0 +1,27 @@
+<h1><%= gettext("Listing Users") %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= gettext("Name") %></th>
+      <th><%= gettext("Email") %></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+
+      <td>
+        <span><%#= link gettext("Show"), to: Routes.offered_service_path(@conn, :show, offered_service) %></span>
+        <span><%#= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, offered_service) %></span>
+        <span><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+

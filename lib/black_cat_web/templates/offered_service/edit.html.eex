@@ -1,5 +1,8 @@
 <h1><%= gettext("Edit Offered Service") %></h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.offered_service_path(@conn, :update, @offered_service)) %>
+<%#= render "form.html", Map.put(assigns, :action, Routes.offered_service_path(@conn, :update, @offered_service)) %>
+
+<%= live_render @conn, BlackCatWeb.OfferedServiceFormLive, session: %{"action" =>  Routes.offered_service_path(@conn, :update, @offered_service), "csrf_token" => @csrf_token, "offered_service" => @offered_service} %>
+
 
 <span><%= link gettext("Back"), to: Routes.offered_service_path(@conn, :index) %></span>

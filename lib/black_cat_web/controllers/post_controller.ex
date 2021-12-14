@@ -8,7 +8,7 @@ defmodule BlackCatWeb.PostController do
 
 
   plug :scrub_params, "comment" when action in [:add_comment]
-  plug :put_layout, "admin_app.html"
+  # plug :put_layout, "admin_app.html"
 
   # method to handle comments on each blog post
   def add_comment(conn, %{"comment" => comment_params, "post_id" => post_id}) do

@@ -17,12 +17,12 @@
 
       <td>
         <span><%= link gettext("Show"), to: Routes.offered_service_path(@conn, :show, offered_service) %></span>
-        <span><%= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, offered_service) %></span>
-        <span><%= link gettext("Delete"), to: Routes.offered_service_path(@conn, :delete, offered_service), method: :delete, data: [confirm: "Você tem certeza?"] %></span>
+        <!--<span><%#= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, offered_service) %></span>
+        <span><%#= link gettext("Delete"), to: Routes.offered_service_path(@conn, :delete, offered_service), method: :delete, data: [confirm: "Você tem certeza?"] %></span>-->
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link gettext("New Offered Service"), to: Routes.offered_service_path(@conn, :new) %></span>
+<!--<span><%#= link gettext("New Offered Service"), to: Routes.offered_service_path(@conn, :new) %></span>-->

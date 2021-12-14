@@ -9,12 +9,12 @@
 
   <li>
     <strong><%= gettext("Content") %>:</strong>
-    <%= @post.body %>
+    <%= raw({:safe, @post.body}) %>
   </li>
 
 </ul>
 
-<span><%= link gettext("Edit"), to: Routes.post_path(@conn, :edit, @post) %></span>
+<!--<span><%#= link gettext("Edit"), to: Routes.post_path(@conn, :edit, @post) %></span>-->
 <span><%= link gettext("Back"), to: Routes.post_path(@conn, :index) %></span>
 
 

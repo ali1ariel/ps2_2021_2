@@ -13,12 +13,12 @@
 <%= for post <- @posts do %>
     <tr>
       <td><%= post.title %></td>
-      <td><%= post.body %></td>
+      <td><%= raw({:safe, post.body}) %></td>
 
       <td>
         <span><%= link gettext("Show"), to: Routes.post_path(@conn, :show, post) %></span>
-        <span><%= link gettext("Edit"), to: Routes.post_path(@conn, :edit, post) %></span>
-        <span><%= link gettext("Delete"), to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Você tem certeza?"] %></span>
+        <!--<span><%#= link gettext("Edit"), to: Routes.post_path(@conn, :edit, post) %></span>
+        <span><%#= link gettext("Delete"), to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Você tem certeza?"] %></span>-->
       </td>
     </tr>
 <% end %>
@@ -26,4 +26,4 @@
   </tbody>
 </table>
 
-<span><%= link gettext("New Post"), to: Routes.post_path(@conn, :new) %></span>
+<!--<span><%#= link gettext("New Post"), to: Routes.post_path(@conn, :new) %></span>-->

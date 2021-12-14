@@ -62,7 +62,9 @@ defmodule BlackCat.MixProject do
       {:credo, "~> 1.5", only: [:test, :dev]},
       {:plug, "~> 1.10.0"},
       {:countries, "~> 1.6"},
-      {:swoosh, "~> 1.4"}
+      {:swoosh, "~> 1.4"},
+      {:kaffy, "~> 0.9.0"},
+      {:timex, "~> 3.6"}
     ]
   end
 

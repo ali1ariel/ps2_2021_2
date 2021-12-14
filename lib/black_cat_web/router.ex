@@ -1,10 +1,11 @@
 defmodule BlackCatWeb.Router do
+
   use BlackCatWeb, :router
 
   import BlackCatWeb.UserAuth
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {BlackCatWeb.LayoutView, :root}
@@ -56,16 +57,16 @@ defmodule BlackCatWeb.Router do
   end
 
   ## Authentication routes
+  # use Kaffy.Routes, scope: "/admrede", pipe_through: [:browser, :require_authenticated_user]
+  # scope "/admrede", BlackCatWeb do
+  #   pipe_through [:browser, :require_authenticated_user]
 
-  scope "/admrede", BlackCatWeb do
-    pipe_through [:browser, :require_authenticated_user]
-
-    get "/", AdmPageController, :index
-    resources "/services", OfferedServiceController
-    resources "/posts", PostController
-    get "/users", UserController, :index
-    delete "/user/:id", UserController, :delete
-  end
+  #   get "/", AdmPageController, :index
+  #   resources "/services", OfferedServiceController
+  #   resources "/posts", PostController
+  #   get "/users", UserController, :index
+  #   delete "/user/:id", UserController, :delete
+  # end
 
   scope "/", BlackCatWeb do
     pipe_through [:browser, :require_authenticated_user]
@@ -87,4 +88,6 @@ defmodule BlackCatWeb.Router do
     get "/users/reset_password/:token", UserResetPasswordController, :edit
     put "/users/reset_password/:token", UserResetPasswordController, :update
   end
+
+  use Kaffy.Routes, scope: "/admrede"
 end

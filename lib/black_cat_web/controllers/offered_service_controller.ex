@@ -4,7 +4,7 @@ defmodule BlackCatWeb.OfferedServiceController do
   alias BlackCat.OfferedServices
   alias BlackCat.OfferedServices.OfferedService
 
-  # plug :put_layout, "admin_app.html"
+  plug :put_layout, "root.html"
 
   def index(conn, _params) do
     offered_services = OfferedServices.list_offered_services()

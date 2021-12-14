@@ -3,6 +3,8 @@ defmodule BlackCatWeb.UserConfirmationController do
 
   alias BlackCat.Accounts
 
+  plug :put_layout, "root.html"
+
   def new(conn, _params) do
     render(conn, "new.html")
   end

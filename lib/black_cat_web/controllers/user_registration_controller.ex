@@ -5,6 +5,8 @@ defmodule BlackCatWeb.UserRegistrationController do
   alias BlackCat.Accounts.User
   alias BlackCatWeb.UserAuth
 
+  plug :put_layout, "root.html"
+
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
     render(conn, "new.html", changeset: changeset)

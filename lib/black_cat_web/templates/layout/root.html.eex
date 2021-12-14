@@ -19,12 +19,10 @@
 
   </head>
   <body class="bg-white-event h-full overflow-x-hidden  leading-normal tracking-normal">
+    <%= render "app.html", assigns %>
 
-
-    <div class="h-full w-full pt-32 md:pt-24" style="font-family: 'Roboto', 'Bold';">
-      <%= @inner_content %>
-    </div>
     <footer class="bg-event-default py-1 fixed w-full bottom-0 border-t border-black shadow-lg z-10">
+    Footer
       <div class="container mb-1 mx-auto text-center text-gray-300 text-sm">
         <a href="">
         </a>

@@ -4,6 +4,8 @@ defmodule BlackCatWeb.UserSessionController do
   alias BlackCat.Accounts
   alias BlackCatWeb.UserAuth
 
+  plug :put_layout, "root.html"
+
   def new(conn, _params) do
     render(conn, "new.html", error_message: nil)
   end
@@ -21,7 +23,7 @@ defmodule BlackCatWeb.UserSessionController do
 
   def delete(conn, _params) do
     conn
-    |> put_flash(:info, "Desconectado com sucesso.y.")
+    |> put_flash(:info, "Desconectado com sucesso.")
     |> UserAuth.log_out_user()
   end
 end

@@ -5,6 +5,7 @@ defmodule BlackCatWeb.UserSettingsController do
   alias BlackCatWeb.UserAuth
 
   plug :assign_email_and_password_changesets
+  plug :put_layout, "root.html"
 
   def edit(conn, _params) do
     render(conn, "edit.html")

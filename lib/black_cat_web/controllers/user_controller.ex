@@ -4,6 +4,8 @@ defmodule BlackCatWeb.UserController do
   alias BlackCat.Accounts
   alias BlackCatWeb.UserAuth
 
+  plug :put_layout, "root.html"
+
 
   def index(conn, _params) do
     users = BlackCat.Accounts.list_users

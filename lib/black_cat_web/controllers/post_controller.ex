@@ -44,7 +44,7 @@ defmodule BlackCatWeb.PostController do
     case BlogPosts.create_post(post_params) do
       {:ok, post} ->
         conn
-        |> put_flash(:info, "Post created successfully.")
+        |> put_flash(:info, "Post criado com sucesso!")
         |> redirect(to: Routes.post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -72,7 +72,7 @@ defmodule BlackCatWeb.PostController do
     case BlogPosts.update_post(post, post_params) do
       {:ok, post} ->
         conn
-        |> put_flash(:info, "Post updated successfully.")
+        |> put_flash(:info, "Post atualizado com sucesso!")
         |> redirect(to: Routes.post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->

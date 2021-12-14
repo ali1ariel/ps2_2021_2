@@ -105,7 +105,12 @@ header nav li .active {
   background-color: #AD1F47;
 }
 
-/* ------------ ADM MENU ----------*/
+.button, button, dd, dt {
+  margin-top: 1.0rem;
+}
+
+
+/* ------------ ADM INTERFACE ----------*/
 .header {
   display: block;
   margin: 0 auto;
@@ -184,7 +189,7 @@ input[type="checkbox"]:checked ~ #sidebarMenu {
 input[type=checkbox] {
   transition: all 0.3s;
   box-sizing: border-box;
-  display: none;
+  float: left;
 }
 .sidebarIconToggle {
   transition: all 0.3s;

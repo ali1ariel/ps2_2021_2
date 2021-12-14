@@ -14,7 +14,7 @@
     <script type="text/javascript" src="<%= Routes.static_path(@conn, ~s[/js/app.js]) %>"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
         <%= csrf_meta_tag() %>
 
   </head>

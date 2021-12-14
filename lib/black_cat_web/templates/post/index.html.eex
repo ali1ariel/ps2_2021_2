@@ -18,7 +18,7 @@
       <td>
         <span><%= link gettext("Show"), to: Routes.post_path(@conn, :show, post) %></span>
         <span><%= link gettext("Edit"), to: Routes.post_path(@conn, :edit, post) %></span>
-        <span><%= link gettext("Delete"), to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link gettext("Delete"), to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Você tem certeza?"] %></span>
       </td>
     </tr>
 <% end %>

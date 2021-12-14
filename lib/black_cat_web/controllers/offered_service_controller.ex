@@ -24,7 +24,7 @@ defmodule BlackCatWeb.OfferedServiceController do
     case OfferedServices.create_offered_service(offered_service_params) do
       {:ok, offered_service} ->
         conn
-        |> put_flash(:info, "Offered service created successfully.")
+        |> put_flash(:info, "Serviço criado com sucesso!")
         |> redirect(to: Routes.offered_service_path(conn, :show, offered_service))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -51,7 +51,7 @@ defmodule BlackCatWeb.OfferedServiceController do
     case OfferedServices.update_offered_service(offered_service, offered_service_params) do
       {:ok, offered_service} ->
         conn
-        |> put_flash(:info, "Offered service updated successfully.")
+        |> put_flash(:info, "Serviço atualizado com sucesso!")
         |> redirect(to: Routes.offered_service_path(conn, :show, offered_service))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -64,7 +64,7 @@ defmodule BlackCatWeb.OfferedServiceController do
     {:ok, _offered_service} = OfferedServices.delete_offered_service(offered_service)
 
     conn
-    |> put_flash(:info, "Offered service deleted successfully.")
+    |> put_flash(:info, "Serviço deletado com sucesso!")
     |> redirect(to: Routes.offered_service_path(conn, :index))
   end
 end

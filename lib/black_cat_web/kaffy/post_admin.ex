@@ -1,5 +1,14 @@
 defmodule BlackCatWeb.Kaffy.PostAdmin do
 
+  """
+    General side menu custom links
+  """
+  def custom_links(_schema) do
+    [
+      %{name: "Ver site", url: "/", order: 2, location: :top, icon: "transgender", target: "_blank"},
+    ]
+  end
+
   def singular_name(_) do
     "Post"
   end
@@ -13,7 +22,7 @@ defmodule BlackCatWeb.Kaffy.PostAdmin do
       title: %{name: "Título"},
       body: %{name: "Conteúdo"},
       inserted_at: %{name: "Criado em", value: fn p -> format_datetime!(p.inserted_at) end},
-      action: %{name: "Ações", value: "editar excluir"},
+      # action: %{name: "Ações", value: "editar excluir"},
     ]
   end
 

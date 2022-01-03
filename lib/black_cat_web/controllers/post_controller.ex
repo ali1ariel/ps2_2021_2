@@ -85,7 +85,8 @@ defmodule BlackCatWeb.PostController do
     {:ok, _post} = BlogPosts.delete_post(post)
 
     conn
-    |> put_flash(:info, "Post deleted successfully.")
+    |> put_flash(:info, "Post deletado com sucesso!")
     |> redirect(to: Routes.post_path(conn, :index))
   end
+
 end

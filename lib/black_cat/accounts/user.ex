@@ -14,21 +14,21 @@ defmodule BlackCat.Accounts.User do
   end
 
   @doc """
-  A user changeset for registration.
+    A user changeset for registration.
 
-  It is important to validate the length of both email and password.
-  Otherwise databases may truncate the email without warnings, which
-  could lead to unpredictable or insecure behaviour. Long passwords may
-  also be very expensive to hash for certain algorithms.
+    It is important to validate the length of both email and password.
+    Otherwise databases may truncate the email without warnings, which
+    could lead to unpredictable or insecure behaviour. Long passwords may
+    also be very expensive to hash for certain algorithms.
 
-  ## Options
+    ## Options
 
-    * `:hash_password` - Hashes the password so it can be stored securely
-      in the database and ensures the password field is cleared to prevent
-      leaks in the logs. If password hashing is not needed and clearing the
-      password field is not desired (like when using this changeset for
-      validations on a LiveView form), this option can be set to `false`.
-      Defaults to `true`.
+      * `:hash_password` - Hashes the password so it can be stored securely
+        in the database and ensures the password field is cleared to prevent
+        leaks in the logs. If password hashing is not needed and clearing the
+        password field is not desired (like when using this changeset for
+        validations on a LiveView form), this option can be set to `false`.
+        Defaults to `true`.
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
@@ -40,7 +40,7 @@ defmodule BlackCat.Accounts.User do
   defp validate_email(changeset) do
     changeset
     |> validate_required([:email])
-    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "must have the @ sign and no spaces")
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "deve conter o símbolo @ e não ter espaços")
     |> validate_length(:email, max: 160)
     |> unsafe_validate_unique(:email, BlackCat.Repo)
     |> unique_constraint(:email)
@@ -101,7 +101,7 @@ defmodule BlackCat.Accounts.User do
   def password_changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:password])
-    |> validate_confirmation(:password, message: "does not match password")
+    |> validate_confirmation(:password, message: "não corresponde à senha")
     |> validate_password(opts)
   end
 
@@ -138,5 +138,11 @@ defmodule BlackCat.Accounts.User do
     else
       add_error(changeset, :current_password, "não é válida")
     end
+  end
+
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:profile])
+    |> validate_required([:profile])
   end
 end

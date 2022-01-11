@@ -8,6 +8,11 @@
   </li>
 
   <li>
+    <strong>Autor:</strong>
+    <%= raw({:safe, @post.user.name}) %>
+  </li>
+
+  <li>
     <strong><%= gettext("Content") %>:</strong>
     <%= raw({:safe, @post.body}) %>
   </li>
@@ -17,6 +22,15 @@
 <!--<span><%#= link gettext("Edit"), to: Routes.post_path(@conn, :edit, @post) %></span>-->
 <span><%= link gettext("Back"), to: Routes.post_path(@conn, :index) %></span>
 
+<%#= render BlackCatWeb.CommentView, "form.html", changeset: @comments, action: Routes.post_path(@conn, :create, @post) %>
+
+
+<%# <div class="comments">
+ <h2>Comments</h2> %>
+ <%#= for comment <- @post.comments do %>
+   <%#= render BlackCat.CommentView, "comment.html", comment: comment %>
+ <%# end %>
+<%# </div> %>
 
 <%#= render "comment_form.html", post: @post, changeset: @changeset, action: Routes.post_post_path(@conn, :add_comment, @post) %>
 

@@ -2,6 +2,8 @@ defmodule BlackCat.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias BlackCat.BlogPosts.Post
+
   schema "users" do
     field :email, :string
     field :name, :string
@@ -9,6 +11,8 @@ defmodule BlackCat.Accounts.User do
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
+
+    belongs_to :post, Post, foreign_key: :post_id
 
     timestamps()
   end

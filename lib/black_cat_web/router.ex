@@ -26,8 +26,11 @@ defmodule BlackCatWeb.Router do
 
     get "/services", OfferedServiceController, :index
     get "/services/:id", OfferedServiceController, :show
-    get "/posts", PostController, :index
-    get "/posts/:id", PostController, :show
+    # get "/posts", PostController, :index
+    # get "/posts/:id", PostController, :show
+    resources "/posts/", PostController, only: [:index, :show] do
+      resources "/comments", CommentController, only: [:create, :delete, :update]
+    end
 
     delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new

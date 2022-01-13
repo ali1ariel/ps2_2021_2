@@ -23,7 +23,7 @@ defmodule BlackCatWeb.UserSessionController do
 
   def delete(conn, _params) do
     conn
-    |> put_flash(:info, "Desconectado com sucesso.")
+    |> put_flash(:info, "Desconectado com sucesso!")
     |> UserAuth.log_out_user()
   end
 end

@@ -55,10 +55,13 @@ defmodule BlackCatWeb.PostController do
   def show(conn, %{"id" => id}) do
     post = BlogPosts.get_post!(id)
       |> Repo.preload(:comments)
+      |> Repo.preload(:user)
     comment_changeset = post
       |> Ecto.build_assoc(:comments)
       |> BlackCat.BlogPosts.Comment.changeset()
-    render(conn, "show.html", post: post, comments: comment_changeset)
+    user_changeset = post
+      |> Ecto.build_assoc(:user)
+    render(conn, "show.html", post: post, comments: comment_changeset, user: post.user)
     # post = BlogPosts.get_post!(id) |> Repo.preload([:comments])
     # changeset = Comment.changeset(%Comment{})
     # render(conn, "show.html", post: post, changeset: changeset)

@@ -12,7 +12,7 @@ defmodule BlackCat.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
 
-    belongs_to :post, Post, foreign_key: :post_id
+    has_many :post, Post
 
     timestamps()
   end
@@ -148,5 +148,9 @@ defmodule BlackCat.Accounts.User do
     user
     |> cast(attrs, [:profile])
     |> validate_required([:profile])
+  end
+
+  def get_user_id(conn) do
+    user = conn.assigns.current_user
   end
 end

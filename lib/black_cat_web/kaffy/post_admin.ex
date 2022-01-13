@@ -22,7 +22,6 @@ defmodule BlackCatWeb.Kaffy.PostAdmin do
       title: %{name: "Título"},
       body: %{name: "Conteúdo"},
       inserted_at: %{name: "Criado em", value: fn p -> format_datetime!(p.inserted_at) end},
-      # action: %{name: "Ações", value: "editar excluir"},
     ]
   end
 
@@ -30,6 +29,7 @@ defmodule BlackCatWeb.Kaffy.PostAdmin do
     [
       title: %{label: "Título"},
       body: %{label: "Conteúdo", type: :richtext},
+      user_id: %{label: "Autor"}, #create: :hidden
     ]
   end
 

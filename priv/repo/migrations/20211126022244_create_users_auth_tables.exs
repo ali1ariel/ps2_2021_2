@@ -10,13 +10,10 @@ defmodule BlackCat.Repo.Migrations.CreateUsersAuthTables do
       add :email, :citext, null: false
       add :hashed_password, :string, null: false
       add :confirmed_at, :naive_datetime
-
-      add :post_id, references(:posts, on_delete: :nothing)
       timestamps()
     end
 
     create unique_index(:users, [:email])
-    create index(:users, [:post_id])
 
     create table(:users_tokens) do
       add :user_id, references(:users, on_delete: :delete_all), null: false

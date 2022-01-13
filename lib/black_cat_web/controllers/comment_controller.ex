@@ -16,7 +16,7 @@ defmodule BlackCatWeb.CommentController do
     case Repo.insert(changeset) do
       {:ok, _comment} ->
         conn
-        |> put_flash(:info, "Comment created successfully!")
+        |> put_flash(:info, "Comentário criado com sucesso!")
         |> redirect(to: Routes.post_path(conn, :show, post))
       {:error, changeset} ->
         render(conn, BlackCat.PostView, "show.html", post: post, comments: changeset)

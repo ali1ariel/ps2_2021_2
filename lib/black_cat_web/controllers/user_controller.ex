@@ -18,7 +18,7 @@ defmodule BlackCatWeb.UserController do
     {:ok, _user} = Accounts.delete_user(user)
 
     conn
-    |> put_flash(:info, "User deleted successfully.")
+    |> put_flash(:info, "Usuário deletado com sucesso.")
     |> redirect(to: Routes.user_path(conn, :index))
   end
 end

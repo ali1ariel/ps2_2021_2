@@ -22,10 +22,51 @@
     <%= render "app.html", assigns %>
 
     <footer class="bg-event-default py-1 fixed w-full bottom-0 border-t border-black shadow-lg z-10">
-    Footer
-      <div class="container mb-1 mx-auto text-center text-gray-300 text-sm">
-        <a href="">
-        </a>
+      <div class="container text-sm">
+        <div class="row">
+          <div class="col-4">
+            <img src="<%= Routes.static_path(@conn, "/images/ifmsa.png") %>" width="200" alt="Logo da International Federation of Medical Student's Association"/>
+          </div>
+          <div class="col-4">
+            <img src="<%= Routes.static_path(@conn, "/images/ufu.png") %>" width="200" alt="Universidade Federal de Uberlândia"/>
+          </div>
+          <div class="col-4">
+            <img src="<%= Routes.static_path(@conn, "/images/unfpa.png") %>" width="200" alt="Logo do Fundo de População das Nações Unidas"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <form>
+              <label for="news">Receba dicas e atualizações</label>
+              <input id="news" name="email_news" placeholder="Digite seu e-mail">
+              <input type="submit" value="Me inscrever"/>
+              <label>Siga nossas redes sociais <a href="https://www.instagram.com/transformacaorede" target="_blank"><i class="fab fa-instagram fa-lg"></i></a></label>
+            </form>
+          </div>
+          <div class="col-2">
+            <label>Serviços</label>
+            <ul>
+              <li><a href="/services" target="_blank">Rede de Saúde</a></li>
+              <li><a href="#" target="_blank">Rede de Abrigo</a></li>
+              <li><a href="https://www.transempregos.com.br" target="_blank">Empregos</a></li>
+              <li><a href="#" target="_blank">Cursos</a></li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <label>Detalhes</label>
+            <ul>
+              <li><a href="/services" target="_blank">Nossa História</a></li>
+              <li><a href="#" target="_blank">Fale Conosco</a></li>
+              <li><a href="#" target="_blank">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <a href="/">
+            <img src="<%= Routes.static_path(@conn, "/images/rede-logo2.png") %>" alt="Rede Transformação"/>
+          </a>
+          </div>
+        </div>
       </div>
     </footer>
   </body>

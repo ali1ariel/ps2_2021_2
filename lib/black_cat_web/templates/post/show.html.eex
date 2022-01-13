@@ -9,7 +9,7 @@
 
   <li>
     <strong>Autor:</strong>
-    <%= raw({:safe, @post.user.name}) %>
+    <%#=  @post.user.name %>
   </li>
 
   <li>

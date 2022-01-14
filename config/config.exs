@@ -31,31 +31,10 @@ config :phoenix, :json_library, Jason
 
 config :black_cat, BlackCat.Mailer, adapter: Swoosh.Adapters.Local
 
-config :kaffy,
-  admin_title: "Rede Transformação - Administração",
-  otp_app: :black_cat,
-  ecto_repo: BlackCat.Repo,
-  router: BlackCatWeb.Router,
-  resources: [
-    blog: [
-      name: "Blog",
-      resources: [
-        post: [schema: BlackCat.BlogPosts.Post, admin: BlackCatWeb.Kaffy.PostAdmin]
-      ]
-    ],
-    offered_service: [
-      name: "Rede de Atendimento",
-      resources: [
-        offered_service: [schema: BlackCat.OfferedServices.OfferedService, admin: BlackCatWeb.Kaffy.ServiceAdmin]
-      ]
-    ],
-    user: [
-      name: "Usuários",
-      resources: [
-        user: [schema: BlackCat.Accounts.User, admin: BlackCatWeb.Kaffy.UserAdmin]
-      ]
-    ]
-  ]
+config :black_cat, upload_directory: "./uploads/images"
+
+# Import kaffy config
+import_config "kaffy.exs"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

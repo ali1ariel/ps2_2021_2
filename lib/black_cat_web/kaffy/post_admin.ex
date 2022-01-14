@@ -27,9 +27,10 @@ defmodule BlackCatWeb.Kaffy.PostAdmin do
 
   def form_fields(_) do
     [
+      user_id: %{label: "Autor", create: :readonly, update: :readonly},
       title: %{label: "Título"},
       body: %{label: "Conteúdo", type: :richtext},
-      user_id: %{label: "Autor"}, #create: :hidden
+      image: %{label: "Imagem", type: :file},
     ]
   end
 

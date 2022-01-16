@@ -1,26 +1,15 @@
-<h1>Post</h1>
-
-<ul>
-
-  <li>
-    <strong><%= gettext("Title") %>:</strong>
-    <%= @post.title %>
-  </li>
-
-  <li>
-    <strong>Autor:</strong>
-    <%=  @post.user.name %>
-  </li>
-
-  <li>
-    <strong><%= gettext("Content") %>:</strong>
-    <%= raw({:safe, @post.body}) %>
-  </li>
-
-</ul>
+<section class="row services">
+  <article class="column">
+    <div class="post_div">
+      <span><%= link gettext("Back"), to: Routes.post_path(@conn, :index) %></span>
+      <h1 style="margin-top: 6%;"><%= @post.title %></h1>
+      <p style="font-size: 12px; text-align: left"><%= @post.user.name  %> • <%= @post.inserted_at %> </p>
+      <p><%= raw({:safe, @post.body}) %></p>
+    </div>
+  </article>
+</section>
 
 <!--<span><%#= link gettext("Edit"), to: Routes.post_path(@conn, :edit, @post) %></span>-->
-<span><%= link gettext("Back"), to: Routes.post_path(@conn, :index) %></span>
 
 <%#= render BlackCatWeb.CommentView, "form.html", changeset: @comments, action: Routes.post_path(@conn, :create, @post) %>
 

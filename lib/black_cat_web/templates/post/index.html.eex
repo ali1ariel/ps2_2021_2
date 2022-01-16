@@ -1,29 +1,12 @@
-<h1><%= gettext("Listing Posts") %></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= gettext("Title") %></</th>
-      <th><%= gettext("Content") %></th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<section class="row services">
 <%= for post <- @posts do %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= raw({:safe, post.body}) %></td>
-
-      <td>
-        <span><%= link gettext("Show"), to: Routes.post_path(@conn, :show, post) %></span>
-        <!--<span><%#= link gettext("Edit"), to: Routes.post_path(@conn, :edit, post) %></span>
-        <span><%#= link gettext("Delete"), to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Você tem certeza?"] %></span>-->
-      </td>
-    </tr>
+  <article class="column">
+    <div class="bg-image-history" style="background-image: url(<%= Routes.static_path(@conn, "/images/sobre.png") %>); width: 300px;"></div>
+  </article>
+  <article class="column">
+    <h1><%= link post.title, to: Routes.post_path(@conn, :show, post) %></h1>
+    <p><%= raw({:safe, post.body}) %></p>
+  </article>
 <% end %>
-
-  </tbody>
+</section>
 </table>
-
-<!--<span><%#= link gettext("New Post"), to: Routes.post_path(@conn, :new) %></span>-->

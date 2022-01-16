@@ -44,21 +44,41 @@
   width: 100%
 }
 
+.container ul {
+  list-style: none;
+}
+
+.container a {
+  color: #1c1c1c;
+}
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
 body{
   margin: 0;
+  background-image: linear-gradient(to bottom right, #ffffff91, #d8f6fca6, #65d4f1);
+  font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 /* Headers */
-header {
+header { 
   width: 100%;
   background: #fdfdfd;
   border-bottom: 1px solid #eaeaea;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 header section {
   justify-content: space-between;
   background-image: linear-gradient(to right, #FFFFFF, #F4E9EC, #F2A5B9);
+}
+
+main {
+  padding-top: 2rem;
+  margin: 0 auto;
 }
 
 header nav {
@@ -97,4 +117,308 @@ header nav li a:hover:not(.active)  {
 header nav li .active {
   color: snow;
   background-color: #AD1F47;
+}
+
+.button, button, dd, dt {
+  margin-top: 1.0rem;
+}
+
+.services {
+  padding: 4%;
+  text-align: center;
+}
+
+.bg-image {
+  margin: 0 auto;
+  width: 300px;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(1px);
+  position: relative;
+}
+
+.bg-image-history {
+  margin: 0 auto;
+  width: 500px;
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.content {
+  position: relative;
+  width: 300px;
+  height: 500px;
+  margin-top: -350px;
+  margin-left: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #fcf4f4;
+  text-shadow: 2px 1px 3px #686868;
+}
+
+.content p {
+  margin-bottom: 0;
+}
+
+.content button {
+  background-color: #1cb0da;
+  border: 1px solid #1cb0da;
+}
+
+.tab-content{
+  text-align: justify;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.nav-tabs {
+  list-style: none;
+  justify-content: space-between;
+  border-bottom: 3px solid #8d898d;
+  margin-bottom: 2%;
+  padding: 0;
+}
+
+.nav-tabs p {
+  color: #8d898d;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.nav-tabs p:hover {
+  color: #fe779a;
+}
+
+.nav-tabs p.active {
+  color: #fe779a;
+  font-weight: bold;
+}
+
+.nav-item {
+  display: inline-block;
+  float: none;
+  cursor: pointer;
+  transition: .33s all ease;
+}
+
+/* --------------- BLOG ----------------*/
+.post_div {
+  max-width: 80%;
+  padding: 8%;
+  margin: 0 auto;
+  background-color: snow;
+  text-align: justify;
+}
+
+/* --------------- FOOTER ----------------*/
+footer {
+  justify-content: space-between;
+  padding: 10px;
+  background-image: linear-gradient(to top right, #f5cdd7, #f7d7dfa6, #ffffffcb);
+  color: #616061;
+}
+
+footer img {
+  margin-left: 4%;
+}
+
+footer div {
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+footer input {
+  padding: 10px;
+  border: 0.5px solid #e2e2e2;
+  border-radius: 4px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+footer input:focus {
+  background-color: rgb(241, 242, 243);
+}
+
+footer a {
+  color: #616061;
+}
+
+footer [type=submit] {
+  background-color: #f2a5b8;
+  color: #444444;
+  border: 0.5px solid #f2a5b8;
+  transform: scale(0.9);
+  letter-spacing: 0.1px;
+  font-weight: bold;
+}
+
+footer [type=submit]:hover {
+  background-color: #e96c8b;
+  color: #444444;
+  border: 0.5px solid #f2a5b8;
+}
+
+
+footer ul {
+  list-style: none;
+  margin-top: 4%;
+}
+
+footer div .element li {
+  margin-bottom: 1%;
+}
+
+/* ------------ ADM INTERFACE ----------*/
+.header {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: none;
+  background-color: #FF7692;
+  position: fixed;
+  height: 60px!important;
+  overflow: hidden;
+  z-index: 10;
+}
+.main {
+  margin: 0 auto;
+  display: block;
+  height: 100%;
+  margin-top: 60px;
+}
+.mainInner{
+  display: table;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.mainInner div{
+  display:table-cell;
+  vertical-align: middle;
+  font-size: 3em;
+  font-weight: bold;
+  letter-spacing: 1.25px;
+}
+#sidebarMenu {
+  height: 100%;
+  position: fixed;
+  user-select: none;
+  left: 0;
+  width: 250px;
+  margin-top: 60px;
+  transform: translateX(-250px);
+  transition: transform 250ms ease-in-out;
+  background: linear-gradient(180deg, #FF7692 0%, #caa2aa 50%, #5ad1f0 100%);
+}
+.sidebarMenuInner{
+  margin:0;
+  padding:0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li{
+  list-style: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li span{
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.50);
+}
+.sidebarMenuInner li a{
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+.sidebarMenuInner li:hover{
+  background: rgba(0, 0, 0, 0.10);
+}
+input[type="checkbox"]:checked ~ #sidebarMenu {
+  transform: translateX(0);
+}
+
+input[type=checkbox] {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  float: left;
+}
+.sidebarIconToggle {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 22px;
+  left: 15px;
+  height: 22px;
+  width: 22px;
+}
+
+.spinner {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+}
+.horizontal {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+.diagonal.part-1 {
+  position: relative;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  float: left;
+}
+.diagonal.part-2 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  transform: rotate(135deg);
+  margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  transform: rotate(-135deg);
+  margin-top: -9px;
+}
+
+#adm {
+  margin-left: 14%;
+  margin-top: 4%;
 }

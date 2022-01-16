@@ -10,10 +10,36 @@
   <%= error_tag f, :title %>
 
   <%= label f, :body, gettext("Content") %>
-  <%= textarea f, :body %>
+  <%= textarea f, :body, class: "invisible" %>
   <%= error_tag f, :body %>
 
   <div>
     <%= submit gettext("Save") %>
   </div>
+
+  <script>
+    ClassicEditor
+      .create( document.querySelector( '#post_body' ), {
+        plugins: [ SimpleUploadAdapter, ],
+        simpleUpload: {
+          // The URL that the images are uploaded to.
+            uploadUrl: 'http://localhost:4000',
+
+            // Enable the XMLHttpRequest.withCredentials property.
+            withCredentials: true,
+
+            // Headers sent along with the XMLHttpRequest to the upload server.
+            //headers: {
+              //  'X-CSRF-TOKEN': 'CSRF-Token',
+              //  Authorization: 'Bearer <JSON Web Token>'
+            //}
+        }
+      } )
+      .then( editor => {
+        console.log( editor );
+      } )
+      .catch( error => {
+        console.error( error );
+      } );
+  </script>
 <% end %>

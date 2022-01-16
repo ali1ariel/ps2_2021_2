@@ -20,5 +20,5 @@
 
 </ul>
 
-<span><%= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, @offered_service) %></span>
+<!--<span><%#= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, @offered_service) %></span>-->
 <span><%= link gettext("Back"), to: Routes.offered_service_path(@conn, :index) %></span>

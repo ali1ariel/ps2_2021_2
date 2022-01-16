@@ -18,10 +18,9 @@
       <td>
         <span><%#= link gettext("Show"), to: Routes.offered_service_path(@conn, :show, offered_service) %></span>
         <span><%#= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, offered_service) %></span>
-        <span><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link gettext("Delete"), to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Você tem certeza?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
-

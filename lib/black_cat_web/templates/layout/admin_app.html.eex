@@ -1,0 +1,35 @@
+<header>
+<!--
+  <div class="wrapper">
+    <div class="sidebar">
+        <h2><%#= gettext("Administrative Panel") %></h2>
+        <ul>
+            <li><a href="/admrede"><i class="fas fa-home"></i><%= gettext("Home") %></a></li>
+            <li><a href="/admrede/posts"><i class="fas fa-user"></i>Posts</a></li>
+            <li><a href="/admrede/services"><i class="fas fa-address-card"></i><%= gettext("Services Network") %></a></li>
+        </ul>
+    </div>
+  </div>
+-->
+  <div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <a href="/admrede"><li><%= gettext("Home") %></li></a>
+      <a href="/admrede/posts"><li>Posts</li></a>
+      <a href="/admrede/services"><li><%= gettext("Services Network") %></li></a>
+    </ul>
+  </div>
+
+</header>
+
+<main role="main" class="container" id="adm">
+  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+  <%= @inner_content %>
+</main>

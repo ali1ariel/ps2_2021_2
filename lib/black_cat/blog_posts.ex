@@ -103,7 +103,6 @@ defmodule BlackCat.BlogPosts do
   end
 
 
-  @doc false
   # def count_comments (query) do
   #   from p in query,
   #     group_by: p.id,

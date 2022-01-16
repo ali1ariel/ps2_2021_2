@@ -96,3 +96,6 @@ msgstr "deve ser maior ou igual a %{number}"
 
 msgid "must be equal to %{number}"
 msgstr "deve ser igual a %{number}"
+
+msgid "You must log in to access this page."
+msgstr "Você precisa fazer login para acessar essa página."

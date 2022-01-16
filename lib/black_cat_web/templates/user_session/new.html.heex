@@ -13,8 +13,8 @@
   <%= label f, :password, gettext("Password") %>
   <%= password_input f, :password, required: true %>
 
-  <%= label f, :remember_me, gettext("Keep me logged in for 60 days") %>
   <%= checkbox f, :remember_me %>
+  <%= label f, :remember_me, gettext("Keep me logged in for 60 days") %>
 
   <div>
     <%= submit "Log in" %>

@@ -87,6 +87,12 @@ msgstr "Senha atual"
 msgid "Services Network"
 msgstr "Rede de Atendimento"
 
+msgid "Confirm Password"
+msgstr "Confirmar Senha"
+
+msgid "Administrative Panel"
+msgstr "Painel Administrativo"
+
 msgid "Service type"
 msgstr "Tipo de Serviço"
 

@@ -8,6 +8,7 @@ defmodule BlackCatWeb.PostController do
 
 
   plug :scrub_params, "comment" when action in [:add_comment]
+  plug :put_layout, "root.html"
 
   # method to handle comments on each blog post
   def add_comment(conn, %{"comment" => comment_params, "post_id" => post_id}) do
@@ -43,7 +44,7 @@ defmodule BlackCatWeb.PostController do
     case BlogPosts.create_post(post_params) do
       {:ok, post} ->
         conn
-        |> put_flash(:info, "Post created successfully.")
+        |> put_flash(:info, "Post criado com sucesso!")
         |> redirect(to: Routes.post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -52,11 +53,18 @@ defmodule BlackCatWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    # post = BlogPosts.get_post!(id)
-    # render(conn, "show.html", post: post)
-    post = BlogPosts.get_post!(id) |> Repo.preload([:comments])
-    changeset = Comment.changeset(%Comment{})
-    render(conn, "show.html", post: post, changeset: changeset)
+    post = BlogPosts.get_post!(id)
+      |> Repo.preload(:comments)
+      |> Repo.preload(:user)
+    comment_changeset = post
+      |> Ecto.build_assoc(:comments)
+      |> BlackCat.BlogPosts.Comment.changeset()
+    user_changeset = post
+      |> Ecto.build_assoc(:user)
+    render(conn, "show.html", post: post, comments: comment_changeset, user: user_changeset)
+    # post = BlogPosts.get_post!(id) |> Repo.preload([:comments])
+    # changeset = Comment.changeset(%Comment{})
+    # render(conn, "show.html", post: post, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -71,7 +79,7 @@ defmodule BlackCatWeb.PostController do
     case BlogPosts.update_post(post, post_params) do
       {:ok, post} ->
         conn
-        |> put_flash(:info, "Post updated successfully.")
+        |> put_flash(:info, "Post atualizado com sucesso!")
         |> redirect(to: Routes.post_path(conn, :show, post))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -84,7 +92,8 @@ defmodule BlackCatWeb.PostController do
     {:ok, _post} = BlogPosts.delete_post(post)
 
     conn
-    |> put_flash(:info, "Post deleted successfully.")
+    |> put_flash(:info, "Post deletado com sucesso!")
     |> redirect(to: Routes.post_path(conn, :index))
   end
+
 end

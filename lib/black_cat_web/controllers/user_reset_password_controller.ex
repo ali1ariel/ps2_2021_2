@@ -4,6 +4,7 @@ defmodule BlackCatWeb.UserResetPasswordController do
   alias BlackCat.Accounts
 
   plug :get_user_by_reset_password_token when action in [:edit, :update]
+  plug :put_layout, "root.html"
 
   def new(conn, _params) do
     render(conn, "new.html")
@@ -37,7 +38,7 @@ defmodule BlackCatWeb.UserResetPasswordController do
     case Accounts.reset_user_password(conn.assigns.user, user_params) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "Password reset successfully.")
+        |> put_flash(:info, "Senha resetada com sucesso!")
         |> redirect(to: Routes.user_session_path(conn, :new))
 
       {:error, changeset} ->

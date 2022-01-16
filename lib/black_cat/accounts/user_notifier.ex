@@ -41,9 +41,9 @@ defmodule BlackCat.Accounts.UserNotifier do
   Deliver instructions to reset a user password.
   """
   def deliver_reset_password_instructions(user, url) do
-    deliver(user.email, "Reset password instructions", """
-
-    ==============================
+    deliver(user.email, "Reset password instructions",
+    """
+      ==============================
 
       Hi #{user.email},
 
@@ -54,7 +54,7 @@ defmodule BlackCat.Accounts.UserNotifier do
       If you didn't request this change, please ignore this.
 
       ==============================
-        """)
+    """)
       url
   end
 

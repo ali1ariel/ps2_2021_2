@@ -24,8 +24,8 @@ config :black_cat, BlackCatWeb.Endpoint,
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     npx: [
       "tailwindcss",
-      "--input=../css/app.scss",
-      "--output=../priv/static/css/app.css",
+      "--input=./css/app.scss",
+      "--output=../../priv/static/css/app.css",
       "--postcss",
       "--watch",
       cd: Path.expand("../assets", __DIR__)

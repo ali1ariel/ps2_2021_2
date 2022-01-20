@@ -11,6 +11,12 @@
     <strong>Type:</strong>
     <%= @offered_service.type %>
   </li>
+  <%= for ti <- @offered_service.time_intervals do %>
+    <li>
+      <strong>Time interval:</strong>
+      <%= ti.init_day %> . <%= ti.init_time %> - <%= ti.end_day %> . <%= ti.end_time %>
+    </li>
+  <% end %>
 
 </ul>
 

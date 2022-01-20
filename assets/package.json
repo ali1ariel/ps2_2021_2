@@ -4,12 +4,7 @@
   "license": "MIT",
   "scripts": {
     "deploy": "NODE_ENV=production tailwindcss --postcss --minify --input=css/app.scss --output=../priv/static/assets/app.css",
-    "watch": "webpack --mode development --watch",
-    "assets.deploy": [
-      "cmd --cd assets npm run deploy",
-      "esbuild default --minify",
-      "phx.digest"
-    ]
+    "watch": "webpack --mode development --watch"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-upload": "^31.1.0",

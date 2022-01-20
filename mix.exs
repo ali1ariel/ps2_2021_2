@@ -63,6 +63,7 @@ defmodule BlackCat.MixProject do
       {:plug, "~> 1.10.0"},
       {:countries, "~> 1.6"},
       {:swoosh, "~> 1.4"},
+      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev}
       {:kaffy, "~> 0.9.0"},
       {:timex, "~> 3.6"}
     ]

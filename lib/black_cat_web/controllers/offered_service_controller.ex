@@ -33,7 +33,7 @@ defmodule BlackCatWeb.OfferedServiceController do
   end
 
   def show(conn, %{"id" => id}) do
-    offered_service = OfferedServices.get_offered_service!(id)
+    offered_service = OfferedServices.get_offered_service!(id) |> BlackCat.Repo.preload(:time_intervals)
     render(conn, "show.html", offered_service: offered_service)
   end
 

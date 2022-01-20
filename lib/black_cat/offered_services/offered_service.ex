@@ -29,6 +29,7 @@ defmodule BlackCat.OfferedServices.OfferedService do
   def changeset(offered_service, attrs) do
     offered_service
     |> cast(attrs, [:name, :type, :observation])
-    |> validate_required([:name, :type, :observation])
+    |> validate_required([:name, :type])
+    |> cast_assoc(:time_intervals)
   end
 end

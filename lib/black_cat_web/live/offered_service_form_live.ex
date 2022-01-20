@@ -23,6 +23,11 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
       <%= gettext("Service type") %>
       <%= select f, :type, Ecto.Enum.mappings(BlackCat.OfferedServices.OfferedService, :type), phx_update: "ignore", class: "mx-2 px-2" %>
       <%= error_tag f, :type %>
+    
+    <div class="m-4">
+        <%= label f, :observation, gettext("Observation") %>
+        <%= textarea f, :observation %>
+        <%= error_tag f, :observation %>
     </div>
 
       <div class="flex flex-row">
@@ -37,7 +42,6 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
             <%= counter+1 %>
           </div>
           <%= live_component TimeIntervalComponent, id: Ecto.Changeset.get_change(time_interval, :virtual_id), csrf_token: @csrf_token, time_interval: time_interval %>
-
         </div>
       <% end %>
       </div>
@@ -51,7 +55,8 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
       """
   end
 
-  def mount(_params, %{"action" => action, "csrf_token" => csrf_token}, socket) do
+
+  def mount(_params, %{"action" => action, "csrf_token" => csrf_token, "offered_service" => offered_service}, socket) do
       assigns = [
       action: action,
       changeset: OfferedServices.change_offered_service(%OfferedServices.OfferedService{}),

@@ -11,6 +11,7 @@ defmodule BlackCat.OfferedServices.OfferedService do
 
   schema "offered_services" do
     field :name, :string
+    field :observation, :string
     field :type, Ecto.Enum, values: [private: 1, public: 2]
 
     has_many :time_intervals, TimeInterval
@@ -27,7 +28,7 @@ defmodule BlackCat.OfferedServices.OfferedService do
   @doc false
   def changeset(offered_service, attrs) do
     offered_service
-    |> cast(attrs, [:name, :type])
+    |> cast(attrs, [:name, :type, :observation])
     |> validate_required([:name, :type])
     |> cast_assoc(:time_intervals)
   end

@@ -1,14 +1,14 @@
-<h1>Show Offered service</h1>
+<h1><%= gettext("Service") %></h1>
 
 <ul>
 
   <li>
-    <strong>Name:</strong>
+    <strong><%= gettext("Name") %>:</strong>
     <%= @offered_service.name %>
   </li>
 
   <li>
-    <strong>Type:</strong>
+    <strong><%= gettext("Type") %>:</strong>
     <%= @offered_service.type %>
   </li>
   <%= for ti <- @offered_service.time_intervals do %>
@@ -18,7 +18,13 @@
     </li>
   <% end %>
 
+
+  <li>
+    <strong><%= gettext("Observation") %>:</strong>
+    <%= @offered_service.observation %>
+  </li>
+
 </ul>
 
-<span><%= link "Edit", to: Routes.offered_service_path(@conn, :edit, @offered_service) %></span>
-<span><%= link "Back", to: Routes.offered_service_path(@conn, :index) %></span>
+<!--<span><%#= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, @offered_service) %></span>-->
+<span><%= link gettext("Back"), to: Routes.offered_service_path(@conn, :index) %></span>

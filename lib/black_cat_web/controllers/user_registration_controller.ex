@@ -5,6 +5,8 @@ defmodule BlackCatWeb.UserRegistrationController do
   alias BlackCat.Accounts.User
   alias BlackCatWeb.UserAuth
 
+  plug :put_layout, "root.html"
+
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
     render(conn, "new.html", changeset: changeset)
@@ -20,7 +22,7 @@ defmodule BlackCatWeb.UserRegistrationController do
           )
 
         conn
-        |> put_flash(:info, "User created successfully.")
+        |> put_flash(:info, "Usuário criado com sucesso!")
         |> UserAuth.log_in_user(user)
 
       {:error, %Ecto.Changeset{} = changeset} ->

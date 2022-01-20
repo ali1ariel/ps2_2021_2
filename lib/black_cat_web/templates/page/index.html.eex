@@ -1,44 +1,128 @@
-<section>
+<section class="row services">
   <article class="column">
-    <h2>Contents</h2>
-    <ul>
-      <li>
-        <%= link "Offered Services", to: Routes.offered_service_path(@conn, :index) %>
-      </li>
-    </ul>
+    <div class="bg-image" style="background-image: url(<%= Routes.static_path(@conn, "/images/abrigos.jpg") %>);"></div>
+    <div class="content">
+      <h1 style="margin-bottom: 49.5%">Abrigos</h1>
+      <p>Busque ajuda</p>
+      <a href="/services">
+        <button>Buscar</button>
+      </a>
+    </div>
+  </article>
+  <article class="column">
+    <div class="bg-image" style="background-image: url(<%= Routes.static_path(@conn, "/images/saude.png") %>);"></div>
+    <div class="content">
+      <h1 style="margin-bottom: 25%">Serviços de<br/> Saúde</h1>
+      <p>Localize o serviço de saúde mais próximo de você</p>
+      <a href="/services">
+        <button>Buscar</button>
+      </a>
+    </div>
+  </article>
+  <article class="column">
+    <div class="bg-image" style="background-image: url(<%= Routes.static_path(@conn, "/images/emprego.png") %>);"></div>
+    <div class="content">
+      <h1 style="margin-bottom: 32%">Empregos</h1>
+      <p>Procure oportunidades de<br/>empregos voltadas para<br/> pessoas Trans</p>
+      <a href="https://www.transempregos.com.br">
+        <button>Buscar</button>
+      </a>
+    </div>
   </article>
 </section>
 
-<section class="row">
+<section class="row services" style="background-image: linear-gradient(to bottom right, #feecf1, #f2f2f2, #fecbcb); margin-left: 0; padding-bottom: 0;">
   <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
-      </li>
-    </ul>
+    <div class="bg-image-history" style="background-image: url(<%= Routes.static_path(@conn, "/images/sobre.png") %>);"></div>
   </article>
+
   <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-    </ul>
+    <div class="col-md-10 col-lg-7 col-xl-6">
+      <h1 style="color: #ee4974">Sobre nós</h1>
+      <p>A Rede TRANSformação é um projeto idealizado por estudantes de medicina, com o apoio do Fundo de Populações das Nações Unidades, para promover saúde à população Trans.</p>
+      <div class="tabs-custom tabs-horizontal tabs-line" id="tabs-4">
+        <!-- Nav tabs-->
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><p class="nav-link active" onclick="doClick(this)">História</p></li>
+          <li class="nav-item"><p class="nav-link" onclick="doClick(this)">Visão</p></li>
+          <li class="nav-item"><p class="nav-link" onclick="doClick(this)">Missão</p></li>
+        </ul>
+        <!-- Tab panes-->
+        <div class="tab-content">
+            <div class="tab-pane active" id="tabs-1">
+              <p>A Rede TRANSformação surgiu a partir do <b>desejo de mudança</b> e da <b>necessidade de
+              ampliar o acesso à saúde</b> pela população trans. O projeto foi idealizado por estudantes
+              de medicina ligados à IFMSA Brazil (Federação Internacional das Associações dos Estudantes
+              de Medicina) da Universidade Federal de Uberlândia e financiados pela UNFPA Brasil.</p>
+            </div>
+            <div class="tab-pane" id="tabs-2">
+                <p>Acreditamos em um mundo onde todas as pessoas possam ter acesso à uma saúde humanizada, de qualidade, livre de estigmas e discriminação.</p>
+            </div>
+            <div class="tab-pane" id="tabs-3">
+              <p>Temos a missão de difundir informações acerca da saúde da população trans e mapear os
+              serviços de saúde e abrigos destinados a essa população, contribuindo para a promoção
+              de saúde dessa população. Além disso, a Rede busca fornecer capacitações sobre o atendimento
+              integral e humanizado para profissionais e estudantes da área da saúde.</p>
+            </div>
+        </div>
+      </div>
+    </div>
   </article>
 </section>
+
+<section class="row services">
+  <article class="column">
+    <h1 style="color: #090165; font-size: 60px; text-shadow: 2px 1px 3px #686868;">Visite nosso blog e veja notícias e dicas que separamos para vocês!</h1>
+    <a href="/posts"><button>Ver Blog</button></a>
+  </article>
+</section>
+
+<script>
+function doClick(e) {
+  current = document.querySelector('.active');
+  divText = $(e).html();
+  curText = $(current).html();
+  if (curText == "Visão") {
+    $('#tabs-2').hide();
+  }
+  else if (curText == "Missão") {
+    $('#tabs-3').hide();
+  }
+  else if (curText == "História") {
+    $('#tabs-1').hide();
+  }
+
+  if (divText == "Visão") {
+    $('#tabs-2').slideToggle("slow");
+  }
+  else if (divText == "Missão") {
+    $('#tabs-3').slideToggle("slow");
+  }
+  else if (divText == "História") {
+    $('#tabs-1').slideToggle("slow");
+  }
+  current.classList.remove("active");
+  e.classList.add("active");
+}
+
+$(document).ready(function () {
+  divText = document.querySelector('.active');
+  $('#tabs-1').hide();
+  $('#tabs-2').hide();
+  $('#tabs-3').hide();
+  divText = $(divText).html();
+  if (divText == "Visão") {
+    $('#tabs-2').show();
+    //$('#link2').append('<hr />');
+  }
+  else if (divText == "Missão") {
+    $('#tabs-3').show();
+    $('#link3').append('<hr />');
+  }
+  else if (divText == "História") {
+    $('#tabs-1').show();
+    $('#link1').append('<hr />');
+  }
+});
+
+</script>

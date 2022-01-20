@@ -4,6 +4,8 @@ defmodule BlackCatWeb.OfferedServiceController do
   alias BlackCat.OfferedServices
   alias BlackCat.OfferedServices.OfferedService
 
+  plug :put_layout, "root.html"
+
   def index(conn, _params) do
     offered_services = OfferedServices.list_offered_services()
     render(conn, "index.html", offered_services: offered_services)
@@ -22,11 +24,11 @@ defmodule BlackCatWeb.OfferedServiceController do
     case OfferedServices.create_offered_service(offered_service_params) do
       {:ok, offered_service} ->
         conn
-        |> put_flash(:info, "Offered service created successfully.")
+        |> put_flash(:info, "Serviço criado com sucesso!")
         |> redirect(to: Routes.offered_service_path(conn, :show, offered_service))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, csrf_token: get_csrf_token())
     end
   end
 
@@ -38,7 +40,7 @@ defmodule BlackCatWeb.OfferedServiceController do
   def edit(conn, %{"id" => id}) do
     offered_service = OfferedServices.get_offered_service!(id)
     changeset = OfferedServices.change_offered_service(offered_service)
-    render(conn, "edit.html", offered_service: offered_service, changeset: changeset)
+    render(conn, "edit.html", offered_service: offered_service, changeset: changeset, csrf_token: get_csrf_token())
   end
 
   def update(conn, %{"id" => id, "offered_service" => offered_service_params}) do
@@ -49,11 +51,11 @@ defmodule BlackCatWeb.OfferedServiceController do
     case OfferedServices.update_offered_service(offered_service, offered_service_params) do
       {:ok, offered_service} ->
         conn
-        |> put_flash(:info, "Offered service updated successfully.")
+        |> put_flash(:info, "Serviço atualizado com sucesso!")
         |> redirect(to: Routes.offered_service_path(conn, :show, offered_service))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", offered_service: offered_service, changeset: changeset)
+        render(conn, "edit.html", offered_service: offered_service, changeset: changeset, csrf_token: get_csrf_token())
     end
   end
 
@@ -62,7 +64,7 @@ defmodule BlackCatWeb.OfferedServiceController do
     {:ok, _offered_service} = OfferedServices.delete_offered_service(offered_service)
 
     conn
-    |> put_flash(:info, "Offered service deleted successfully.")
+    |> put_flash(:info, "Serviço deletado com sucesso!")
     |> redirect(to: Routes.offered_service_path(conn, :index))
   end
 end

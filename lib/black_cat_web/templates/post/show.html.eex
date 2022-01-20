@@ -1,22 +1,25 @@
-<h1>Show Post</h1>
+<section class="row services">
+  <article class="column">
+    <div class="post_div">
+      <span><%= link gettext("Back"), to: Routes.post_path(@conn, :index) %></span>
+      <h1 style="margin-top: 6%;"><%= @post.title %></h1>
+      <p style="font-size: 12px; text-align: left"><%= @post.user.name  %> • <%= @post.inserted_at %> </p>
+      <p><%= raw({:safe, @post.body}) %></p>
+    </div>
+  </article>
+</section>
 
-<ul>
+<!--<span><%#= link gettext("Edit"), to: Routes.post_path(@conn, :edit, @post) %></span>-->
 
-  <li>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </li>
+<%#= render BlackCatWeb.CommentView, "form.html", changeset: @comments, action: Routes.post_path(@conn, :create, @post) %>
 
-  <li>
-    <strong>Body:</strong>
-    <%= @post.body %>
-  </li>
 
-</ul>
-
-<span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span>
-<span><%= link "Back", to: Routes.post_path(@conn, :index) %></span>
-
+<%# <div class="comments">
+ <h2>Comments</h2> %>
+ <%#= for comment <- @post.comments do %>
+   <%#= render BlackCat.CommentView, "comment.html", comment: comment %>
+ <%# end %>
+<%# </div> %>
 
 <%#= render "comment_form.html", post: @post, changeset: @changeset, action: Routes.post_post_path(@conn, :add_comment, @post) %>
 

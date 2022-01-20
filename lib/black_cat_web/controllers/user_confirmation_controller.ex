@@ -3,6 +3,8 @@ defmodule BlackCatWeb.UserConfirmationController do
 
   alias BlackCat.Accounts
 
+  plug :put_layout, "root.html"
+
   def new(conn, _params) do
     render(conn, "new.html")
   end
@@ -35,7 +37,7 @@ defmodule BlackCatWeb.UserConfirmationController do
     case Accounts.confirm_user(token) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "User confirmed successfully.")
+        |> put_flash(:info, "USuário confirmado com sucesso!")
         |> redirect(to: "/")
 
       :error ->

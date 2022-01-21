@@ -33,7 +33,7 @@ config :black_cat, BlackCat.Mailer, adapter: Swoosh.Adapters.Local
 
 config :black_cat, upload_directory: "./uploads/images"
 
-config :esbuild, :version, "0.14.0"
+config :esbuild, :version, "0.14.12"
 
 # Import kaffy config
 import_config "kaffy.exs"

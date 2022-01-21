@@ -33,9 +33,9 @@ config :black_cat, BlackCat.Mailer, adapter: Swoosh.Adapters.Local
 
 config :black_cat, upload_directory: "./uploads/images"
 
-config :esbuild, :version, "0.14.12"
-
-config :esbuild, path: "./assets/node_modules/.bin/esbuild"
+config :esbuild,
+  version: "0.14.12",
+  path: Path.expand("../assets/node_modules/.bin/esbuild", __DIR__)
 
 # Import kaffy config
 import_config "kaffy.exs"

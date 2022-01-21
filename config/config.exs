@@ -35,7 +35,7 @@ config :black_cat, upload_directory: "./uploads/images"
 
 config :esbuild, :version, "0.14.12"
 
-config :esbuild, path: "./assets/node_modules/esbuild"
+# config :esbuild, path: "./assets/node_modules/.bin/esbuild"
 
 # Import kaffy config
 import_config "kaffy.exs"

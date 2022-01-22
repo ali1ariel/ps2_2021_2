@@ -22,6 +22,6 @@ defmodule BlackCat.OfferedServices.Address do
   def changeset(address, attrs) do
     address
     |> cast(attrs, [:postal_code, :city, :state, :country, :street, :number, :complement, :references, :geocode])
-    |> validate_required([:postal_code, :city, :state, :country, :street, :number, :complement, :references, :geocode])
+    |> validate_required([:postal_code, :city, :state, :country, :street, :number, :complement, :references])
   end
 end

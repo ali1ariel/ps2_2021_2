@@ -62,7 +62,11 @@ defmodule BlackCat.MixProject do
       {:credo, "~> 1.5", only: [:test, :dev]},
       {:plug, "~> 1.10.0"},
       {:countries, "~> 1.6"},
-      {:swoosh, "~> 1.4"}
+      {:swoosh, "~> 1.4"},
+      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
+      {:kaffy, "~> 0.9.0"},
+      {:timex, "~> 3.6"},
+      {:dart_sass, "~> 0.3", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -77,7 +81,9 @@ defmodule BlackCat.MixProject do
       setup: ["deps.get", "ecto.setup", "cmd npm install --prefix assets"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      "assets.deploy": [
+        "cmd --cd assets npm run deploy", "esbuild default --minify", "phx.digest"]
     ]
   end
 end

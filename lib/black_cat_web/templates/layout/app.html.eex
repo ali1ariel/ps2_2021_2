@@ -9,18 +9,18 @@
     <!-- MENU PRINCIPAL -->
     <nav role="navigation">
       <ul>
-        <li><a href="/">Início</a></li>
-        <li><a href="/">Rede de Atendimento</a></li>
-        <li><a href="/">Abrigos</a></li>
-        <li><a href="https://www.transempregos.com.br/" target="_blank">Empregos</a></li>
+        <li><a href="/"><%= gettext("Home") %></a></li>
+        <li><a href="/services"><%= gettext("Services Network") %></a></li>
+        <li><a href="/"><%= gettext("Shelters") %></a></li>
+        <li><a href="https://www.transempregos.com.br" target="_blank"><%= gettext("Jobs") %></a></li>
         <li><a href="/posts">Blog</a></li>
-        <li><a href="/">Contato</a></li>
+        <li><a href="/"><%= gettext("Contact") %></a></li>
       </ul>
     </nav>
     <!-- FIM MENU PRINCIPAL -->
 
   </header>
-  <main role="main" class="container">
+  <main role="main" class="container" style="margin:0 ; padding: 0;">
     <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
     <%= @inner_content %>

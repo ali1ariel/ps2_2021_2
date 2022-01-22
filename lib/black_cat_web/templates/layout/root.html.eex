@@ -8,26 +8,65 @@
     <%= live_title_tag assigns[:page_title] || "Saúde da População Trans", suffix: " · Rede Transformação" %>
 
 
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, ~s[/css/app.css]) %>"/>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, ~s[/css/from_scss.css]) %>"/>
     <script src="https://kit.fontawesome.com/a73c23d57b.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Noto+Sans+TC&family=Roboto&family=Montserrat&display=swap" rel="stylesheet">
     <script type="text/javascript" src="<%= Routes.static_path(@conn, ~s[/js/app.js]) %>"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
         <%= csrf_meta_tag() %>
 
   </head>
   <body class="bg-white-event h-full overflow-x-hidden  leading-normal tracking-normal">
+    <%= render "app.html", assigns %>
 
-
-    <div class="h-full w-full pt-32 md:pt-24" style="font-family: 'Roboto', 'Bold';">
-      <%= @inner_content %>
-    </div>
     <footer class="bg-event-default py-1 fixed w-full bottom-0 border-t border-black shadow-lg z-10">
-      <div class="container mb-1 mx-auto text-center text-gray-300 text-sm">
-        <a href="">
-        </a>
+      <div class="container text-sm">
+        <div class="row">
+          <div class="col-4">
+            <img src="<%= Routes.static_path(@conn, "/images/ifmsa.png") %>" width="200" alt="Logo da International Federation of Medical Student's Association"/>
+          </div>
+          <div class="col-4">
+            <img src="<%= Routes.static_path(@conn, "/images/ufu.png") %>" width="200" alt="Universidade Federal de Uberlândia"/>
+          </div>
+          <div class="col-4">
+            <img src="<%= Routes.static_path(@conn, "/images/unfpa.png") %>" width="200" alt="Logo do Fundo de População das Nações Unidas"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <form>
+              <label for="news">Receba dicas e atualizações</label>
+              <input id="news" name="email_news" placeholder="Digite seu e-mail">
+              <input type="submit" value="Me inscrever"/>
+              <label>Siga nossas redes sociais <a href="https://www.instagram.com/transformacaorede" target="_blank"><i class="fab fa-instagram fa-lg"></i></a></label>
+            </form>
+          </div>
+          <div class="col-2">
+            <label>Serviços</label>
+            <ul>
+              <li><a href="/services" target="_blank">Rede de Saúde</a></li>
+              <li><a href="#" target="_blank">Rede de Abrigo</a></li>
+              <li><a href="https://www.transempregos.com.br" target="_blank">Empregos</a></li>
+              <li><a href="#" target="_blank">Cursos</a></li>
+            </ul>
+          </div>
+          <div class="col-2">
+            <label>Detalhes</label>
+            <ul>
+              <li><a href="/services" target="_blank">Nossa História</a></li>
+              <li><a href="#" target="_blank">Fale Conosco</a></li>
+              <li><a href="#" target="_blank">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <a href="/">
+            <img src="<%= Routes.static_path(@conn, "/images/rede-logo2.png") %>" alt="Rede Transformação"/>
+          </a>
+          </div>
+        </div>
       </div>
     </footer>
   </body>

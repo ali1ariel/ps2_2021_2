@@ -1,4 +1,5 @@
 defmodule BlackCatWeb.Router do
+
   use BlackCatWeb, :router
 
   import BlackCatWeb.UserAuth
@@ -7,7 +8,7 @@ defmodule BlackCatWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {BlackCatWeb.LayoutView, :root}
+    # plug :put_root_layout, {BlackCatWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
@@ -22,12 +23,21 @@ defmodule BlackCatWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/services", OfferedServiceController
-    resources "/posts", PostController do
-      post "/comment", PostController, :add_comment
-    end
-  end
 
+    get "/services", OfferedServiceController, :index
+    get "/services/:id", OfferedServiceController, :show
+    # get "/posts", PostController, :index
+    # get "/posts/:id", PostController, :show
+    resources "/posts/", PostController, only: [:index, :show] do
+      resources "/comments", CommentController, only: [:create, :delete, :update]
+    end
+
+    delete "/users/log_out", UserSessionController, :delete
+    get "/users/confirm", UserConfirmationController, :new
+    post "/users/confirm", UserConfirmationController, :create
+    get "/users/confirm/:token", UserConfirmationController, :edit
+    post "/users/confirm/:token", UserConfirmationController, :update
+  end
   # Other scopes may use custom stacks.
   # scope "/api", BlackCatWeb do
   #   pipe_through :api
@@ -50,6 +60,24 @@ defmodule BlackCatWeb.Router do
   end
 
   ## Authentication routes
+  # use Kaffy.Routes, scope: "/admrede", pipe_through: [:browser, :require_authenticated_user]
+  # scope "/admrede", BlackCatWeb do
+  #   pipe_through [:browser, :require_authenticated_user]
+
+  #   get "/", AdmPageController, :index
+  #   resources "/services", OfferedServiceController
+  #   resources "/posts", PostController
+  #   get "/users", UserController, :index
+  #   delete "/user/:id", UserController, :delete
+  # end
+
+  scope "/", BlackCatWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/users/settings", UserSettingsController, :edit
+    put "/users/settings", UserSettingsController, :update
+    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+  end
 
   scope "/", BlackCatWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
@@ -64,21 +92,5 @@ defmodule BlackCatWeb.Router do
     put "/users/reset_password/:token", UserResetPasswordController, :update
   end
 
-  scope "/", BlackCatWeb do
-    pipe_through [:browser, :require_authenticated_user]
-
-    get "/users/settings", UserSettingsController, :edit
-    put "/users/settings", UserSettingsController, :update
-    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
-  end
-
-  scope "/", BlackCatWeb do
-    pipe_through [:browser]
-
-    delete "/users/log_out", UserSessionController, :delete
-    get "/users/confirm", UserConfirmationController, :new
-    post "/users/confirm", UserConfirmationController, :create
-    get "/users/confirm/:token", UserConfirmationController, :edit
-    post "/users/confirm/:token", UserConfirmationController, :update
-  end
+  use Kaffy.Routes, scope: "/admrede", pipe_through: [:browser, :require_authenticated_user]
 end

@@ -1,20 +1,45 @@
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <p><%= gettext("Oops, something went wrong! Please check the errors below.") %></p>
     </div>
   <% end %>
 
-  <%= label f, :title %>
+  <%= label f, :title, gettext("Title") %>
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
-  <%= label f, :body %>
-  <%= textarea f, :body %>
+  <%= label f, :body, gettext("Content") %>
+  <%= textarea f, :body, class: "invisible" %>
   <%= error_tag f, :body %>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit gettext("Save") %>
   </div>
+
+  <script>
+    ClassicEditor
+      .create( document.querySelector( '#post_body' ), {
+        plugins: [ SimpleUploadAdapter, ],
+        simpleUpload: {
+          // The URL that the images are uploaded to.
+            uploadUrl: 'http://localhost:4000',
+
+            // Enable the XMLHttpRequest.withCredentials property.
+            withCredentials: true,
+
+            // Headers sent along with the XMLHttpRequest to the upload server.
+            //headers: {
+              //  'X-CSRF-TOKEN': 'CSRF-Token',
+              //  Authorization: 'Bearer <JSON Web Token>'
+            //}
+        }
+      } )
+      .then( editor => {
+        console.log( editor );
+      } )
+      .catch( error => {
+        console.error( error );
+      } );
+  </script>
 <% end %>
-<%#= live_render @conn, BlackCatWeb.OfferedServiceFormLive, changeset: @changeset, action: @action %>

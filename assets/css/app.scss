@@ -1,11 +1,12 @@
 /* This file is for your main application css. */
 @import "./phoenix.css";
 
-@tailwind base;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
-@tailwind components;
+/* @import "./components/navbar.css"; /* added */
 
-@tailwind utilities;
+@import "tailwindcss/utilities";
 
 
 /* Alerts and form errors */

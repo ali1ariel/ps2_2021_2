@@ -27,6 +27,14 @@ config :black_cat, BlackCatWeb.Endpoint,
       "development",
       "--watch-stdin",
       cd: Path.expand("../assets", __DIR__)
+    ],
+    npx: [
+      "tailwindcss",
+      "--input=./css/app.scss",
+      "--output=../../priv/static/css/app.css",
+      "--postcss",
+      "--watch",
+      cd: Path.expand("../assets", __DIR__)
     ]
   ]
 

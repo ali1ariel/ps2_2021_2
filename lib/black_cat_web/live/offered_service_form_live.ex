@@ -23,7 +23,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
       <%= gettext("Service type") %>
       <%= select f, :type, Ecto.Enum.mappings(BlackCat.OfferedServices.OfferedService, :type), phx_update: "ignore", class: "mx-2 px-2" %>
       <%= error_tag f, :type %>
-    
+
     <div class="m-4">
         <%= label f, :observation, gettext("Observation") %>
         <%= textarea f, :observation %>
@@ -88,19 +88,13 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
     |> Enum.map(&(Ecto.Changeset.apply_changes(&1) |> then(fn ti -> (%{init_day: ti.init_day, init_time: ti.init_time, end_day: ti.end_day, end_time: ti.end_time}) end)))
     |> then(&Map.put(params["offered_service"], "time_intervals", &1))
     |> then(&Map.put(&1, "type", &1["type"] |> String.to_integer))
-    |> IO.inspect
     |> BlackCat.OfferedServices.create_offered_service()
     |> case do
       {:ok, service} ->
-        IO.inspect service
         redirect(socket, to: Routes.offered_service_path(socket, :index))
       {:error, errors} ->
-        IO.inspect errors
         {:noreply, assign(socket, [errors: errors])}
     end
-    # IO.inspect(socket.assigns.time_intervals)
-    # :timer.sleep(2000)
-    # {:noreply, socket }
   end
 
   def handle_event("remove_time_interval", %{"id" => id}, socket) do
@@ -128,7 +122,6 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
         time_intervals = time_intervals -- [to_update]
 
         updated = OfferedServices.change_time_interval(%OfferedServices.TimeInterval{}, time_interval)
-        |> IO.inspect
 
         time_intervals = (time_intervals ++ [updated]) |> Enum.sort_by(&(Ecto.Changeset.get_change(&1, :virtual_id)))
     {:noreply,

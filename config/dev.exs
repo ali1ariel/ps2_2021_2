@@ -21,13 +21,11 @@ config :black_cat, BlackCatWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
-    npx: [
-      "tailwindcss",
-      "--input=./css/app.scss",
-      "--output=../../priv/static/css/app.css",
-      "--postcss",
-      "--watch",
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
       cd: Path.expand("../assets", __DIR__)
     ]
   ]

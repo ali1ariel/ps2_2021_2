@@ -24,11 +24,10 @@ defmodule BlackCatWeb.Router do
 
     get "/", PageController, :index
 
-    get "/services", OfferedServiceController, :index
-    get "/services/:id", OfferedServiceController, :show
     # get "/posts", PostController, :index
     # get "/posts/:id", PostController, :show
-    resources "/posts/", PostController, only: [:index, :show] do
+      resources "/services", OfferedServiceController
+      resources "/posts/", PostController, only: [:index, :show] do
       resources "/comments", CommentController, only: [:create, :delete, :update]
     end
 
@@ -64,8 +63,7 @@ defmodule BlackCatWeb.Router do
   # scope "/admrede", BlackCatWeb do
   #   pipe_through [:browser, :require_authenticated_user]
 
-  #   get "/", AdmPageController, :index
-  #   resources "/services", OfferedServiceController
+      get "/", PageController, :index
   #   resources "/posts", PostController
   #   get "/users", UserController, :index
   #   delete "/user/:id", UserController, :delete

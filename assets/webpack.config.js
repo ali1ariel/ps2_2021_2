@@ -24,7 +24,7 @@ module.exports = (env, options) => {
       path: path.resolve(__dirname, '../priv/static/js'),
       publicPath: '/js/'
     },
-    devtool: devMode ? 'eval-cheap-module-source-map' : undefined,
+    devtool: devMode ? 'source-map' : undefined,
     module: {
       rules: [
         {
@@ -38,8 +38,13 @@ module.exports = (env, options) => {
           test: /\.[s]?css$/,
           use: [
             MiniCssExtractPlugin.loader,
-            'css-loader',
-            'sass-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: devMode
+              }
+            },
+            "postcss-loader"
           ],
         }
       ]

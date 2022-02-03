@@ -8,6 +8,7 @@ defmodule BlackCatWeb.OfferedServiceController do
 
   def index(conn, _params) do
     offered_services = OfferedServices.list_offered_services()
+    |> BlackCat.Repo.preload([:time_intervals])
     render(conn, "index.html", offered_services: offered_services)
   end
 

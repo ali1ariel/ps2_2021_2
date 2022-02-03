@@ -1,28 +1,46 @@
-<h1><%= gettext("Listing Offered Services") %></h1>
+<div class="w-full px-20 py-8 border border-blue-200">
 
-<table>
-  <thead>
-    <tr>
-      <th><%= gettext("Name") %></th>
-      <th><%= gettext("Type") %></th>
+  <h1><%= gettext("Listing Offered Services") %></h1>
+  
+  <% time = DateTime.now!("America/Sao_Paulo")  %><br/>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for offered_service <- @offered_services do %>
-    <tr>
-      <td><%= offered_service.name %></td>
-      <td><%= offered_service.type %></td>
+  <div class="mx-auto border border-pink-300 p-4 w-48 justify-center text-center">
+    <%="#{time.day}/#{time.month |> BlackCat.Helpers.Month.month()}"%>
+    <b class="text-center">
+      <br/><%=" #{time |> Date.day_of_week() |> BlackCat.Helpers.Month.day_of_week}"%>
+      <br/><%="#{time.hour}:#{time.minute}"  %>
+    </b>
+  </div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th><%= gettext("Name") %></th>
+        <th><%= gettext("Type") %></th>
+        <th><%= gettext("Available") %></th>
+        
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for offered_service <- @offered_services do %>
+      <tr>
+        <td><%= offered_service.name %></td>
+        <td><%= offered_service.type %></td>
+        <td><%= BlackCat.Helpers.TimeIntervalHelper.interval(time, offered_service.time_intervals) |> IO.inspect |> raw() %></td>
 
-      <td>
-        <span><%= link gettext("Show"), to: Routes.offered_service_path(@conn, :show, offered_service) %></span>
-        <!--<span><%#= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, offered_service) %></span>
-        <span><%#= link gettext("Delete"), to: Routes.offered_service_path(@conn, :delete, offered_service), method: :delete, data: [confirm: "Você tem certeza?"] %></span>-->
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
 
-<!--<span><%#= link gettext("New Offered Service"), to: Routes.offered_service_path(@conn, :new) %></span>-->
+        
+        <td>
+          <span><%= link gettext("Show"), to: Routes.offered_service_path(@conn, :show, offered_service) %></span>
+          <!--<span><%#= link gettext("Edit"), to: Routes.offered_service_path(@conn, :edit, offered_service) %></span>
+            <span><%#= link gettext("Delete"), to: Routes.offered_service_path(@conn, :delete, offered_service), method: :delete, data: [confirm: "Você tem certeza?"] %></span>-->
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <span><%= link gettext("New Offered Service"), to: Routes.offered_service_path(@conn, :new) %></span>
+    
+  </div>

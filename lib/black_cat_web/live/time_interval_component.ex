@@ -4,11 +4,10 @@ defmodule BlackCatWeb.Live.TimeIntervalComponent do
 
     def render(assigns) do
       ~H"""
-      <div class="flex">
+      <div class="flex flex-row px-16">
       <.form let={f} for={@changeset} phx-target={@myself} phx-change="validate_time_interval" id={Ecto.Changeset.get_change(@changeset, :virtual_id) |> Integer.to_string} class="flex flex-row justify-around mx-4 my-2">
-        <%= select f, :init_day, Ecto.Enum.mappings(OfferedServices.TimeInterval, :init_day), class: "mx-2 px-2" %>
+        <%= select f, :init_day, Ecto.Enum.mappings(OfferedServices.TimeInterval, :init_day), class: "mx-2 px-2 bg-white" %>
         <%= time_input f, :init_time, precision: :minute, value: "00:00", class: "mx-2" %>
-        <%= select f, :end_day, Ecto.Enum.mappings(OfferedServices.TimeInterval, :end_day), class: "mx-2 px-2"  %>
         <%= time_input f, :end_time, precision: :minute, value: "23:59", class: "mx-2" %>
         <%= hidden_input f, :virtual_id, value: Ecto.Changeset.get_change(@changeset, :virtual_id), class: "mx-2" %>
       </.form>

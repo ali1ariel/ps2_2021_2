@@ -13,25 +13,27 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
       <p>Oops, something went wrong! Please check the errors below.</p>
       </div>
       <% end %>
-      <div class="m-4">
-    <%= gettext("Name") %>
-    <%= text_input f, :name, phx_update: "ignore" %>
-    <%= error_tag f, :name %>
-      </div>
+
+    <div class="m-4">
+      <%= gettext("Name") %>
+      <%= text_input f, :name, phx_update: "ignore", class: "mx-2 px-2 bg-white" %>
+      <%= error_tag f, :name %>
+    </div>
 
     <div class="m-4">
       <%= gettext("Service type") %>
-      <%= select f, :type, Ecto.Enum.mappings(BlackCat.OfferedServices.OfferedService, :type), phx_update: "ignore", class: "mx-2 px-2" %>
+      <%= select f, :type, Ecto.Enum.mappings(BlackCat.OfferedServices.OfferedService, :type), phx_update: "ignore", class: "mx-2 px-2 bg-white" %>
       <%= error_tag f, :type %>
+    </div>
 
     <div class="m-4">
         <%= label f, :observation, gettext("Observation") %>
-        <%= textarea f, :observation %>
+        <%= textarea f, :observation, phx_update: "ignore", class: "mx-2 px-2 bg-white" %>
         <%= error_tag f, :observation %>
     </div>
 
       <div class="flex flex-row">
-      <%= submit "Save", class: "mx-2 px-2"%>
+      <%= submit "Save", class: "px-2 bg-white text-black ml-auto"%>
       </div>
       </form>
 
@@ -45,8 +47,8 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
         </div>
       <% end %>
       </div>
-      <div class="flex">
-        <a href="#" class="flex my-auto p-4 bg-green-200 border rounded hover:bg-event-red-600 hover:text-white" phx-click="add_time_interval">
+      <div class="flex flex-row">
+        <a href="#" class="flex flex-row my-auto p-4 bg-green-200 border rounded hover:bg-event-red-600 hover:text-white" phx-click="add_time_interval">
           <i class="fas fa-plus text-sm text-black"></i>
         </a>
       </div>
@@ -85,13 +87,13 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
 
   def handle_event("save", params, socket) do
     socket.assigns.time_intervals
-    |> Enum.map(&(Ecto.Changeset.apply_changes(&1) |> then(fn ti -> (%{init_day: ti.init_day, init_time: ti.init_time, end_day: ti.end_day, end_time: ti.end_time}) end)))
+    |> Enum.map(&(Ecto.Changeset.apply_changes(&1) |> then(fn ti -> (%{init_day: ti.init_day, init_time: ti.init_time, end_time: ti.end_time}) end)))
     |> then(&Map.put(params["offered_service"], "time_intervals", &1))
     |> then(&Map.put(&1, "type", &1["type"] |> String.to_integer))
     |> BlackCat.OfferedServices.create_offered_service()
     |> case do
       {:ok, service} ->
-        redirect(socket, to: Routes.offered_service_path(socket, :index))
+        {:noreply, redirect(socket, to: Routes.offered_service_path(socket, :index))}
       {:error, errors} ->
         {:noreply, assign(socket, [errors: errors])}
     end
@@ -114,7 +116,7 @@ defmodule BlackCatWeb.OfferedServiceFormLive do
         socket
       ) do
 
-        time_interval = %{time_interval | "init_day" => time_interval["init_day"] |> String.to_integer(), "end_day" => time_interval["end_day"] |> String.to_integer()}
+        time_interval = %{time_interval | "init_day" => time_interval["init_day"] |> String.to_integer()}
 
         time_intervals =  socket.assigns.time_intervals
         to_update = Enum.find(time_intervals, &(Ecto.Changeset.get_change(&1, :virtual_id) == time_interval["virtual_id"] |> String.to_integer()))

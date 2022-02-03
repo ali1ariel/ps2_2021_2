@@ -40,7 +40,7 @@ config :black_cat, upload_directory: "./uploads/images"
 config :dart_sass,
   version: "1.49.0",
   default: [
-    args: ~w(css/app.scss ../priv/static/assets/css/app.css),
+    args: ~w(css/app.scss ../priv/static/assets/static/css/app.css),
     cd: Path.expand("../assets", __DIR__)
   ]
 

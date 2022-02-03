@@ -12,7 +12,7 @@ defmodule BlackCat.BlogPosts.Post do
   schema "posts" do
     field :body, :string
     field :title, :string
-    field :image, CustomImageField
+    field :image, :any, virtual: true
 
     belongs_to :user, User
     has_many :comments, Comment

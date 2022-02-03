@@ -47,18 +47,18 @@
           <div class="col-2">
             <label>Serviços</label>
             <ul>
-              <li><a href="/services" target="_blank">Rede de Saúde</a></li>
-              <li><a href="#" target="_blank">Rede de Abrigo</a></li>
+              <li><a href="/services">Rede de Saúde</a></li>
+              <li><a href="#">Rede de Abrigo</a></li>
               <li><a href="https://www.transempregos.com.br" target="_blank">Empregos</a></li>
-              <li><a href="#" target="_blank">Cursos</a></li>
+              <li><a href="#">Cursos</a></li>
             </ul>
           </div>
           <div class="col-2">
             <label>Detalhes</label>
             <ul>
-              <li><a href="/services" target="_blank">Nossa História</a></li>
-              <li><a href="#" target="_blank">Fale Conosco</a></li>
-              <li><a href="#" target="_blank">FAQ</a></li>
+              <li><a href="/#about">Nossa História</a></li>
+              <li><a href="#">Fale Conosco</a></li>
+              <li><a href="#">Dúvidas Frequentes</a></li>
             </ul>
           </div>
           <div class="col-4">

@@ -1,12 +1,14 @@
-<section class="row services">
 <%= for post <- @posts do %>
+<section class="row services">
   <article class="column">
-    <div class="bg-image-history" style="background-image: url(<%= Routes.static_path(@conn, "/images/sobre.png") %>); width: 300px;"></div>
+    <div class="post-index">
+      <div class="bg-blog-thumb " style="background-image: url(<%= Routes.static_path(@conn, "/images/sobre.png") %>); width: 300px; float: left;"></div>
+      <div style="padding-left: 20px; float: left; overflow: hidden; max-width: 500px;">
+        <h1 style='text-align: center;'><%= link post.title, to: Routes.post_path(@conn, :show, post) %></h1>
+        <p style='text-align: justify;'><%= raw({:safe, post.body}) %></p>
+      </div>
+    </div>
   </article>
-  <article class="column">
-    <h1><%= link post.title, to: Routes.post_path(@conn, :show, post) %></h1>
-    <p><%= raw({:safe, post.body}) %></p>
-  </article>
-<% end %>
 </section>
+<% end %>
 </table>

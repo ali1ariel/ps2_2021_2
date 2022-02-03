@@ -1,3 +1,4 @@
+<div class="bg" style="background-image: url(<%= Routes.static_path(@conn, "/images/bg.png") %>);"></div>
 <section class="row services">
   <article class="column">
     <div class="bg-image" style="background-image: url(<%= Routes.static_path(@conn, "/images/abrigos.jpg") %>);"></div>
@@ -31,7 +32,7 @@
   </article>
 </section>
 
-<section class="row services" style="background-image: linear-gradient(to bottom right, #feecf1, #f2f2f2, #fecbcb); margin-left: 0; padding-bottom: 0;">
+<section id="about" class="row services" style="background-image: linear-gradient(to bottom right, #feecf1, #f2f2f2, #fecbcb); margin-left: 0; padding-bottom: 0;">
   <article class="column">
     <div class="bg-image-history" style="background-image: url(<%= Routes.static_path(@conn, "/images/sobre.png") %>);"></div>
   </article>
@@ -93,13 +94,13 @@ function doClick(e) {
   }
 
   if (divText == "Visão") {
-    $('#tabs-2').slideToggle("slow");
+    $('#tabs-2').fadeIn("slow");
   }
   else if (divText == "Missão") {
-    $('#tabs-3').slideToggle("slow");
+    $('#tabs-3').fadeIn("slow");
   }
   else if (divText == "História") {
-    $('#tabs-1').slideToggle("slow");
+    $('#tabs-1').fadeIn("slow");
   }
   current.classList.remove("active");
   e.classList.add("active");
